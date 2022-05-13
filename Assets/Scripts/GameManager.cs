@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-
+        uiManager.OpenUI(_startOpen);
     }
 
     private void ManangerInit()

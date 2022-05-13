@@ -6,9 +6,9 @@ using UnityEngine;
 public abstract class UIBase : MonoBehaviour
 {
     public UIType type;
-    public float transitionTimer;
+    public float transitionTimer = 0.6f;
     public int index;
-    public CanvasGroup canvasGroup;
+    [HideInInspector]public CanvasGroup canvasGroup;
     protected UIManager uiManager;
     public virtual void Open()
     {

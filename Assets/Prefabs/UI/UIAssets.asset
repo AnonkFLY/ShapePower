@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93ae189b88a2a24a88f3527b116a3ae, type: 3}
   m_Name: UIAssets
   m_EditorClassIdentifier: 
-  _uiList: []
+  _uiList:
+  - {fileID: 8315037078271776390, guid: 502c9ccc84bef0d42a2af00c63b80f94, type: 3}
+  - {fileID: 5001730207780174386, guid: fc458129306821847a110c0540688172, type: 3}

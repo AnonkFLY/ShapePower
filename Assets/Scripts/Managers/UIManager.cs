@@ -3,22 +3,25 @@ using UnityEngine;
 
 public class UIManager
 {
-    private List<UIBase> _uiLiist;
+    public static readonly int close = Animator.StringToHash("Close");
+    public static readonly int open = Animator.StringToHash("Open");
     private UIAssets _uiAssets;
     private Transform _canvesTrans;
-    private Dictionary<UIType, UIBase> _instanceUI;
+    private List<UIBase> _uiLiist = new List<UIBase>();
+    private Dictionary<UIType, UIBase> _instanceUI = new Dictionary<UIType, UIBase>();
 
     public UIManager(UIAssets uIAssets)
     {
         _uiAssets = uIAssets;
         _canvesTrans = GameObject.FindObjectOfType<Canvas>().transform;
     }
-    public void OpenUI(UIType type,bool closeLast)
+    public void OpenUI(UIType type, bool closeLast = false)
     {
         var panel = GetUI(type);
-        if(closeLast)
+        if (closeLast)
             CloseUI();
         panel.Open();
+        panel.index = _uiLiist.Count;
         _uiLiist.Add(panel);
     }
     public void CloseUI()
@@ -36,7 +39,7 @@ public class UIManager
         if (!_instanceUI.TryGetValue(type, out panel))
         {
             panel = InstanceUIPanel(type);
-            _instanceUI.Add(type,panel);
+            _instanceUI.Add(type, panel);
         }
         return panel;
     }
@@ -55,6 +58,6 @@ public class UIManager
 }
 public enum UIType
 {
-    StartGamePanel,
-    LevelScene
+    StartView,
+    LevelView
 }
