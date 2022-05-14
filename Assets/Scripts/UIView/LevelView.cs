@@ -25,6 +25,12 @@ public class LevelView : UIBase, IUpdatable
         roleChoices[_archive.archiveObj.choose].GetComponent<Toggle>().isOn = true;
         for (int i = 0; i < roleChoices.Length; i++)
         {
+            var role = _archive.archiveObj.roles[i];
+            if (role != null)
+            {
+                role.sprite = datas[i].sprite;
+                datas[i] = role;
+            }
             var unLock = _archive.archiveObj.GetRoleIsPurchased(i);
             roleChoices[i].InitChoiceView(datas[i], i, unLock);
         }

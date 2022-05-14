@@ -25,11 +25,7 @@ public class UIManager
             return;
         panel.Open();
         panel.isOpen = true;
-        IUpdatable update = panel.GetComponent<IUpdatable>();
-        if (update != null)
-            GameManager.Instance.onUIUpdate = new System.Action(update.OnUpdateView);
-        else
-            GameManager.Instance.onUIUpdate = null;
+        UpdateUIEvent(panel);
         panel.index = _uiLiist.Count;
         _uiLiist.Add(panel);
     }
@@ -45,7 +41,18 @@ public class UIManager
             return;
         panel.Close();
         panel.isOpen = false;
+        var rTop = _uiLiist.Count-2;
+        if(rTop>=0)
+            UpdateUIEvent(_uiLiist[rTop]);
         _uiLiist.RemoveAt(index);
+    }
+    private void UpdateUIEvent(UIBase panel)
+    {
+        IUpdatable update = panel.GetComponent<IUpdatable>();
+        if (update != null)
+            GameManager.Instance.onUIUpdate = new System.Action(update.OnUpdateView);
+        else
+            GameManager.Instance.onUIUpdate = null;
     }
     private UIBase GetUI(UIType type)
     {

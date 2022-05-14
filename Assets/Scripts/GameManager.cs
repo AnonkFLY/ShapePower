@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     {
         SingleInit();
         ManangerInit();
+        Application.targetFrameRate = 60;
         onRoleChange = new Action<RoleBase,int>(OnRoleChange);
         _moneyView = GetComponentInChildren<MoneyView>();
 

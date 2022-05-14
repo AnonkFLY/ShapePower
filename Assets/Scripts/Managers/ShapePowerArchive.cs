@@ -37,4 +37,14 @@ public class ShapePowerArchive : ArchiveManager<ShapePowerSave>
         MoneyChange();
         Saved();
     }
+    public bool UpdateRoleLevelUp(int index)
+    {
+        var result = archiveObj.LevelUpRole(index);
+        if (result)
+        {
+            MoneyChange();
+            Saved();
+        }
+        return result;
+    }
 }

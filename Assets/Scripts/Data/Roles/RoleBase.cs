@@ -5,6 +5,8 @@ public class RoleBase
 {
     public string name;
     public string briefly;
+    public int level = 1;
+    public int levelupPay;
     public Sprite sprite;
     public int price;
     public int health;

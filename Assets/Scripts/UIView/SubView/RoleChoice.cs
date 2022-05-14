@@ -17,8 +17,10 @@ public class RoleChoice : MonoBehaviour
     private Toggle _toggle;
     private RoleDataView _roleView;
     private int _roleIndex;
-
+    private ShapePowerArchive archiveManager;
     private readonly int jump = Animator.StringToHash("Jump");
+    private readonly int showBriefly = Animator.StringToHash("ShowBriefly");
+    private readonly int hideBriefly = Animator.StringToHash("HideBriefly");
     private readonly int withdraw = Animator.StringToHash("Withdraw");
     void Awake()
     {
@@ -30,7 +32,27 @@ public class RoleChoice : MonoBehaviour
         _buyButton = GetComponentInChildren<BuyButton>();
 
         _buyButton.onClick += BuyRole;
+        _displayData.onClick.AddListener(ShowBriefly);
+        _roleView = GetComponentInChildren<RoleDataView>();
     }
+    void Start()
+    {
+        archiveManager = GameManager.Instance.archiveManager;
+    }
+
+    private void ShowBriefly()
+    {
+        _animator.Play(showBriefly);
+        _displayData.onClick.RemoveListener(ShowBriefly);
+        _displayData.onClick.AddListener(HideBriefly);
+    }
+    private void HideBriefly()
+    {
+        _animator.Play(hideBriefly);
+        _displayData.onClick.RemoveListener(HideBriefly);
+        _displayData.onClick.AddListener(ShowBriefly);
+    }
+
     private void OnClick(bool isOn)
     {
         if (!isOn)
@@ -46,7 +68,9 @@ public class RoleChoice : MonoBehaviour
         _buyButton.gameObject.SetActive(!isPurchased);
         SetPurchased(isPurchased);
 
+        _roleView.onLevel += LevelUp;
         _roleView?.UpdateView(roleData);
+
         _toggle.group = transform.parent.GetComponent<ToggleGroup>();
     }
     private void SetPurchased(bool value)
@@ -57,7 +81,6 @@ public class RoleChoice : MonoBehaviour
         _displayData.gameObject.SetActive(value);
         if (value)
         {
-            UnLockRole();
             if (priceText != null)
                 Destroy(priceText.gameObject);
         }
@@ -70,21 +93,30 @@ public class RoleChoice : MonoBehaviour
     public void Jump()
     {
         _animator.Play(jump);
+        _displayData.onClick.RemoveAllListeners();
+        _displayData.onClick.AddListener(ShowBriefly);
     }
     public void WithDraw()
     {
         _animator.Play(withdraw);
     }
-    private void UnLockRole()
-    {
 
-    }
     public void BuyRole()
     {
         DebugLog.Message("Buy");
-        var result = GameManager.Instance.archiveManager.BuyRole(_roleIndex, roleData.price);
+        var result = archiveManager.BuyRole(_roleIndex, roleData.price);
         if (result)
             SetPurchased(result);
         _buyButton.BuyResult(result);
+    }
+    private void LevelUp()
+    {
+        var result = archiveManager.UpdateRoleLevelUp(_roleIndex);
+        Debug.Log(result);
+        if (result)
+        {
+            var roleDatas = archiveManager.archiveObj.roles[_roleIndex];
+            _roleView?.UpdateView(roleDatas);
+        }
     }
 }
