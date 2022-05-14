@@ -7,6 +7,7 @@ public abstract class UIBase : MonoBehaviour
 {
     public UIType type;
     public float transitionTimer = 0.6f;
+    public bool isOpen;
     public int index;
     [HideInInspector]public CanvasGroup canvasGroup;
     protected UIManager uiManager;
@@ -15,6 +16,7 @@ public abstract class UIBase : MonoBehaviour
         canvasGroup.DOFade(1, transitionTimer);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
+        
     }
     public virtual void Close()
     {

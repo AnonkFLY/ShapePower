@@ -9,28 +9,52 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get => _instance; }
     //Managers
-    public InputManager inputManager;
-    public ArchiveManager<ShapePowerSave> archiveManager;
+    public ShapePowerArchive archiveManager;
     public UIManager uiManager;
 
     [Header("Requirement")]
     [SerializeField] private UIAssets _uiAssets;
     [SerializeField] private UIType _startOpen;
-    [SerializeField] private UIType[] _testUI;
+    //事件
+    public Action<RoleBase,int> onRoleChange;
+    public Action onUIUpdate;
+    private RoleBase _currentRole;
+    private MoneyView _moneyView;
     private void Awake()
     {
         SingleInit();
         ManangerInit();
+        onRoleChange = new Action<RoleBase,int>(OnRoleChange);
+        _moneyView = GetComponentInChildren<MoneyView>();
+
+    }
+    public void OpenMoneyView()
+    {
+        _moneyView.gameObject.SetActive(true);
+        archiveManager.AddMoney(0);
+    }
+    public void CloseMoneyView()
+    {
+        _moneyView.gameObject.SetActive(false);
     }
     private void Start()
     {
         uiManager.OpenUI(_startOpen);
     }
+    private void Update()
+    {
+        onUIUpdate?.Invoke();
+    }
+    private void OnRoleChange(RoleBase choose,int index)
+    {
+        _currentRole = choose;
+        archiveManager.SetChoose(index);
+    }
 
     private void ManangerInit()
     {
-        inputManager = new InputManager();
-        archiveManager = new ArchiveManager<ShapePowerSave>();
+        archiveManager = new ShapePowerArchive();
+        archiveManager.Load();
         uiManager = new UIManager(_uiAssets);
     }
 
@@ -47,4 +71,5 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
 }

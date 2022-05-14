@@ -5,6 +5,7 @@ public class UIManager
 {
     public static readonly int close = Animator.StringToHash("Close");
     public static readonly int open = Animator.StringToHash("Open");
+    public static readonly int normal = Animator.StringToHash("Normal");
     private UIAssets _uiAssets;
     private Transform _canvesTrans;
     private List<UIBase> _uiLiist = new List<UIBase>();
@@ -20,7 +21,15 @@ public class UIManager
         var panel = GetUI(type);
         if (closeLast)
             CloseUI();
+        if (panel.isOpen)
+            return;
         panel.Open();
+        panel.isOpen = true;
+        IUpdatable update = panel.GetComponent<IUpdatable>();
+        if (update != null)
+            GameManager.Instance.onUIUpdate = new System.Action(update.OnUpdateView);
+        else
+            GameManager.Instance.onUIUpdate = null;
         panel.index = _uiLiist.Count;
         _uiLiist.Add(panel);
     }
@@ -30,7 +39,12 @@ public class UIManager
     }
     public void CloseUI(int index)
     {
-        _uiLiist[index].Close();
+        DebugLog.Message($"The Close UI on {index}");
+        var panel = _uiLiist[index];
+        if (!panel.isOpen)
+            return;
+        panel.Close();
+        panel.isOpen = false;
         _uiLiist.RemoveAt(index);
     }
     private UIBase GetUI(UIType type)
@@ -59,5 +73,6 @@ public class UIManager
 public enum UIType
 {
     StartView,
-    LevelView
+    LevelView,
+    TransitionsView
 }

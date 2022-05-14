@@ -134,11 +134,11 @@ Library: lib_burst_generated
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Core.dll
+--root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
---root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.2D.SpriteShape.Runtime.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
 --root-assembly=D:\GitProject\ShapePower\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll

@@ -27,9 +27,11 @@ public class StartView : UIBase
     public override void Close()
     {
         _panelAnimator?.Play(UIManager.close);
+        GameManager.Instance.OpenMoneyView();
     }
     public override void Open()
     {
         _panelAnimator?.Play(UIManager.open);
+        GameManager.Instance.CloseMoneyView();
     }
 }
