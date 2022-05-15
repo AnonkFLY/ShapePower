@@ -9,6 +9,8 @@ public class LevelView : UIBase, IUpdatable
 {
     [SerializeField]
     private RoleBase[] datas;
+    private SceneData[] sceneDatas;
+    private SceneView[] sceneViews;
     private Button _backButton;
     private Animator _panelAnimator;
     private RoleChoice[] roleChoices;
@@ -21,8 +23,16 @@ public class LevelView : UIBase, IUpdatable
         _backButton = transform.Find("Back").GetComponent<Button>();
         _backButton.onClick.AddListener(Back);
         roleChoices = GetComponentsInChildren<RoleChoice>();
+        sceneViews = GetComponentsInChildren<SceneView>();
         _archive = GameManager.Instance.archiveManager;
+        sceneDatas = GameManager.Instance.sceneManager.scenesData;
         roleChoices[_archive.archiveObj.choose].GetComponent<Toggle>().isOn = true;
+        InitRoleData();
+        InitLevelData();
+    }
+
+    private void InitRoleData()
+    {
         for (int i = 0; i < roleChoices.Length; i++)
         {
             var role = _archive.archiveObj.roles[i];
@@ -35,6 +45,16 @@ public class LevelView : UIBase, IUpdatable
             roleChoices[i].InitChoiceView(datas[i], i, unLock);
         }
     }
+    private void InitLevelData()
+    {
+        for (int i = 0; i < sceneDatas.Length; i++)
+        {
+            var unLock = _archive.archiveObj.GetLevelLocked(i);
+            sceneDatas[i].IsUnlocked = unLock;
+            sceneViews[i].InitSceneView(sceneDatas[i], i);
+        }
+    }
+
     private void Back()
     {
         uiManager.OpenUI(UIType.StartView, true);

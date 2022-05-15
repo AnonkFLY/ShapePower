@@ -415,6 +415,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[0].sceneName
+      value: test
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[1].sceneName
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[2].sceneName
+      value: 222
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[3].sceneName
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[4].sceneName
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[0].sceneSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6f8408798bb9aa540bdf8719676972f2, type: 3}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[1].sceneSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cc672386ee892a6439097046a3d3fa61, type: 3}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[2].sceneSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[3].sceneSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e7df16fcb59cac644837485ab6f457f7, type: 3}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[4].sceneSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2674571471c854642bdce8013e27f855, type: 3}
     - target: {fileID: 1593296557912874825, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
       propertyPath: m_RootOrder
       value: 2

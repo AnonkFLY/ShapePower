@@ -5,7 +5,9 @@ using UnityEngine;
 public class ShapePowerSave
 {
     private const int roleCount = 4;
-    public byte buyRole = 1;
+    public int levelCount = 5;
+    public int buyRole = 1;
+    public int levelLocked = 1;
     public int money = 0;
     public int choose = 0;
     public RoleBase[] roles = new RoleBase[roleCount];
@@ -17,28 +19,36 @@ public class ShapePowerSave
     public void SetRoleIsPurchased(int i)
     {
         //DebugLog.Message($"设置角色被购买{i}--{buyRole}");
-        buyRole = SetBool(buyRole, i);
+        buyRole = SetBool(ref buyRole, i);
     }
-    private bool GetBool(byte value, int index)
+    public bool GetLevelLocked(int i)
     {
-        return ((buyRole >> index) % 2) == 1;
+        return GetBool(levelLocked, i);
     }
-    private byte SetBool(byte value, int index)
+    public void SetLevelUnlocked(int i)
     {
-        return (byte)(buyRole | (1 << index));
+        levelLocked = SetBool(ref levelLocked, i);
+    }
+    private bool GetBool(int value, int index)
+    {
+        return ((value >> index) % 2) == 1;
+    }
+    private int SetBool(ref int value, int index)
+    {
+        return (value | (1 << index));
     }
     public bool LevelUpRole(int index)
     {
-        if(roles[index].level>=5)
+        if (roles[index].level >= 5)
             return false;
-        if(roles[index].levelupPay<=money)
+        if (roles[index].levelupPay <= money)
         {
             money -= roles[index].levelupPay;
             ++roles[index].level;
             var level = roles[index].level;
-            roles[index].armor+=2*level;
-            roles[index].health+=10*level;
-            roles[index].levelupPay *=2;
+            roles[index].armor += 2 * level;
+            roles[index].health += 10 * level;
+            roles[index].levelupPay *= 2;
             return true;
         }
         return false;

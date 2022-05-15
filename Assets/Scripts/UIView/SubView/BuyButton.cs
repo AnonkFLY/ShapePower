@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class BuyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
+    [SerializeField] private string faildText;
     private Animator _animator;
     private TMP_Text _text;
     private bool canClick = true;
@@ -21,11 +22,9 @@ public class BuyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if (!isPurchased)
         {
-            DebugLog.Message("金钱不足");
             StartCoroutine(NoMoney());
             return;
         }
-        DebugLog.Message("购买成功");
         _animator.SetBool("isOpen", false);
         _animator.Play(UIManager.close);
 
@@ -37,7 +36,7 @@ public class BuyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private IEnumerator NoMoney()
     {
-        _text.text = "No Money";
+        _text.text = faildText;
         canClick = false;
         yield return new WaitForSeconds(2);
         canClick = true;

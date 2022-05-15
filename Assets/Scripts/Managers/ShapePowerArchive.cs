@@ -47,4 +47,16 @@ public class ShapePowerArchive : ArchiveManager<ShapePowerSave>
         }
         return result;
     }
+    public int UnLockNextLevel()
+    {
+        for(int i =0;i<archiveObj.levelCount;i++)
+        {
+            if(!archiveObj.GetLevelLocked(i))
+            {
+                archiveObj.SetLevelUnlocked(i);
+                return i;
+            }
+        }
+        return -1;
+    }
 }

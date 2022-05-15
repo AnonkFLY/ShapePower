@@ -11,12 +11,13 @@ public class GameManager : MonoBehaviour
     //Managers
     public ShapePowerArchive archiveManager;
     public UIManager uiManager;
+    public SceneManager sceneManager;
 
     [Header("Requirement")]
     [SerializeField] private UIAssets _uiAssets;
     [SerializeField] private UIType _startOpen;
     //事件
-    public Action<RoleBase,int> onRoleChange;
+    public Action<RoleBase, int> onRoleChange;
     public Action onUIUpdate;
     private RoleBase _currentRole;
     private MoneyView _moneyView;
@@ -25,9 +26,8 @@ public class GameManager : MonoBehaviour
         SingleInit();
         ManangerInit();
         Application.targetFrameRate = 60;
-        onRoleChange = new Action<RoleBase,int>(OnRoleChange);
+        onRoleChange = new Action<RoleBase, int>(OnRoleChange);
         _moneyView = GetComponentInChildren<MoneyView>();
-
     }
     public void OpenMoneyView()
     {
@@ -38,6 +38,13 @@ public class GameManager : MonoBehaviour
     {
         _moneyView.gameObject.SetActive(false);
     }
+    public void UnLockNextLevel()
+    {
+        var i = archiveManager.UnLockNextLevel();
+        if (i == -1)
+            return;
+        sceneManager.SetUnlocked(i);
+    }
     private void Start()
     {
         uiManager.OpenUI(_startOpen);
@@ -45,8 +52,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         onUIUpdate?.Invoke();
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            UnLockNextLevel();
+        }
     }
-    private void OnRoleChange(RoleBase choose,int index)
+
+    private void OnRoleChange(RoleBase choose, int index)
     {
         _currentRole = choose;
         archiveManager.SetChoose(index);

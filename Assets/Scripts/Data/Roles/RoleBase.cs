@@ -4,6 +4,7 @@ using UnityEngine;
 public class RoleBase
 {
     public string name;
+    public int id;
     public string briefly;
     public int level = 1;
     public int levelupPay;
