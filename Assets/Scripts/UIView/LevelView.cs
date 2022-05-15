@@ -26,7 +26,9 @@ public class LevelView : UIBase, IUpdatable
         sceneViews = GetComponentsInChildren<SceneView>();
         _archive = GameManager.Instance.archiveManager;
         sceneDatas = GameManager.Instance.sceneManager.scenesData;
-        roleChoices[_archive.archiveObj.choose].GetComponent<Toggle>().isOn = true;
+        var chooseRole = roleChoices[_archive.archiveObj.choose];
+        chooseRole.OnClick(true);
+        chooseRole.GetComponent<Toggle>().isOn = true;
         InitRoleData();
         InitLevelData();
     }
@@ -35,11 +37,14 @@ public class LevelView : UIBase, IUpdatable
     {
         for (int i = 0; i < roleChoices.Length; i++)
         {
-            var role = _archive.archiveObj.roles[i];
-            if (role != null)
+            if (_archive.archiveObj.roles.Length > i)
             {
-                role.sprite = datas[i].sprite;
-                datas[i] = role;
+                var role = _archive.archiveObj.roles[i];
+                if (role != null)
+                {
+                    role.sprite = datas[i].sprite;
+                    datas[i] = role;
+                }
             }
             var unLock = _archive.archiveObj.GetRoleIsPurchased(i);
             roleChoices[i].InitChoiceView(datas[i], i, unLock);
@@ -63,24 +68,29 @@ public class LevelView : UIBase, IUpdatable
     {
         _panelAnimator?.Play(UIManager.close);
         CloseSubView();
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
     public override void Open()
     {
         _panelAnimator?.Play(UIManager.open);
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
     public void OpenSubView()
     {
-
-        StartCoroutine(JumpUpRoleView(true));
+        StartCoroutine(JumpUpRoleView<RoleChoice>(true, 0.3f, roleChoices));
+        StartCoroutine(JumpUpRoleView<SceneView>(true, 0.15f, sceneViews));
     }
     public void CloseSubView()
     {
-        StartCoroutine(JumpUpRoleView(false));
+        StartCoroutine(JumpUpRoleView<RoleChoice>(false, 0.15f, roleChoices));
+        StartCoroutine(JumpUpRoleView<SceneView>(false, 0.05f, sceneViews));
     }
-    private IEnumerator JumpUpRoleView(bool open)
+    private IEnumerator JumpUpRoleView<T>(bool open, float timer, T[] array) where T : IJumpable
     {
-        var wait = new WaitForSeconds(0.2f);
-        foreach (var item in roleChoices)
+        var wait = new WaitForSeconds(timer);
+        foreach (var item in array)
         {
             if (open)
                 item.Jump();
@@ -88,6 +98,7 @@ public class LevelView : UIBase, IUpdatable
                 item.WithDraw();
             yield return wait;
         }
+
     }
 
     public void OnUpdateView()

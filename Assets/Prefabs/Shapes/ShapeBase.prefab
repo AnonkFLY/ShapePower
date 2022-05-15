@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7325833546850990980}
   - component: {fileID: 4499946047248421784}
   - component: {fileID: 5565846725140382841}
+  - component: {fileID: -7367984882596131808}
   m_Layer: 0
   m_Name: ShapeBase
   m_TagString: Untagged
@@ -123,3 +124,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-7367984882596131808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346608643879638113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab931d6bcacc4b4fb001e1864379f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerData:
+    name: 
+    id: 0
+    briefly: 
+    level: 1
+    levelupPay: 0
+    sprite: {fileID: 0}
+    price: 0
+    health: 0
+    speed: 0
+    armor: 0

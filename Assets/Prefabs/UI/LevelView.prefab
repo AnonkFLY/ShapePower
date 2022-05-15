@@ -489,7 +489,7 @@ MonoBehaviour:
   datas:
   - name: CircleFighter
     id: 0
-    briefly: 
+    briefly: I need to fight!
     level: 1
     levelupPay: 10
     sprite: {fileID: 21300000, guid: cc672386ee892a6439097046a3d3fa61, type: 3}
@@ -499,7 +499,7 @@ MonoBehaviour:
     armor: 3
   - name: RectangleTank
     id: 1
-    briefly: 
+    briefly: Don't be afraid, I am here!
     level: 1
     levelupPay: 10
     sprite: {fileID: 21300000, guid: 45e1c173b531628429bac1c950ee5970, type: 3}
@@ -509,7 +509,7 @@ MonoBehaviour:
     armor: 3
   - name: TriangleBravo
     id: 2
-    briefly: 
+    briefly: Quietly approach...
     level: 1
     levelupPay: 10
     sprite: {fileID: 21300000, guid: 2674571471c854642bdce8013e27f855, type: 3}
@@ -519,7 +519,7 @@ MonoBehaviour:
     armor: 3
   - name: StarMagic
     id: 3
-    briefly: 
+    briefly: Magic yyds!!!
     level: 1
     levelupPay: 10
     sprite: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
@@ -910,7 +910,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 8376905381003933164}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.7296
+  m_Size: 0.7619048
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

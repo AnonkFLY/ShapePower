@@ -1,16 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class RoleChoice : MonoBehaviour
+public class RoleChoice : MonoBehaviour, IJumpable
 {
     [SerializeField] private RoleBase roleData;
     [SerializeField] private Image roleImage;
     [SerializeField] private TMP_Text priceText;
+    [SerializeField] private TMP_Text brieflyText;
+    private CanvasGroup _brieflyCanvas;
     private BuyButton _buyButton;
     private Button _displayData;
     private Animator _animator;
@@ -34,6 +38,7 @@ public class RoleChoice : MonoBehaviour
         _buyButton.onClick += BuyRole;
         _displayData.onClick.AddListener(ShowBriefly);
         _roleView = GetComponentInChildren<RoleDataView>();
+        _brieflyCanvas = brieflyText.GetComponent<CanvasGroup>();
     }
     void Start()
     {
@@ -52,22 +57,38 @@ public class RoleChoice : MonoBehaviour
         _displayData.onClick.RemoveListener(HideBriefly);
         _displayData.onClick.AddListener(ShowBriefly);
     }
-
-    private void OnClick(bool isOn)
+    private float timer = 0;
+    public void OnClick(bool isOn)
     {
         if (!isOn)
             return;
         GameManager.Instance.onRoleChange?.Invoke(roleData, _roleIndex);
+        _brieflyCanvas.alpha = 1;
+        timer = 1.5f;
+    }
+    private void Update()
+    {
+        if (timer <= 0)
+            return;
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                _brieflyCanvas.DOFade(0,0.6f);
+            }
+        }
     }
 
     public void InitChoiceView(RoleBase roleData, int index, bool isPurchased)
     {
+        DebugLog.Message(brieflyText.text);
         _roleIndex = index;
         this.roleData = roleData;
         roleImage.sprite = roleData.sprite;
         _buyButton.gameObject.SetActive(!isPurchased);
+        brieflyText.text = roleData.briefly;
         SetPurchased(isPurchased);
-
         _roleView.onLevel += LevelUp;
         _roleView?.UpdateView(roleData);
 

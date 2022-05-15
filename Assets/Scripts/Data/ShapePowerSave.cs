@@ -10,7 +10,7 @@ public class ShapePowerSave
     public int levelLocked = 1;
     public int money = 0;
     public int choose = 0;
-    public RoleBase[] roles = new RoleBase[roleCount];
+    public RoleBase[] roles;
     public bool GetRoleIsPurchased(int i)
     {
         //DebugLog.Message($"尝试获取角色{i}是否购买--{buyRole}");

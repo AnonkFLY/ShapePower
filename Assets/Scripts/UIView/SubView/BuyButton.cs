@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -37,6 +38,7 @@ public class BuyButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private IEnumerator NoMoney()
     {
         _text.text = faildText;
+        _text.transform.DOShakePosition(0.4f,new Vector3(10,0,0));
         canClick = false;
         yield return new WaitForSeconds(2);
         canClick = true;

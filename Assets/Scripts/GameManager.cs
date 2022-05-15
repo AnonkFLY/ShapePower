@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public ShapePowerArchive archiveManager;
     public UIManager uiManager;
     public SceneManager sceneManager;
+    public PlayerManager playerManager;
 
     [Header("Requirement")]
     [SerializeField] private UIAssets _uiAssets;
@@ -19,8 +20,10 @@ public class GameManager : MonoBehaviour
     //事件
     public Action<RoleBase, int> onRoleChange;
     public Action onUIUpdate;
+    [SerializeField]
     private RoleBase _currentRole;
     private MoneyView _moneyView;
+    private PlayerController _playerController;
     private void Awake()
     {
         SingleInit();
@@ -29,6 +32,7 @@ public class GameManager : MonoBehaviour
         onRoleChange = new Action<RoleBase, int>(OnRoleChange);
         _moneyView = GetComponentInChildren<MoneyView>();
     }
+
     public void OpenMoneyView()
     {
         _moneyView.gameObject.SetActive(true);
@@ -82,7 +86,38 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
+    }
+    public IEnumerator BackLevel()
+    {
+        DebugLog.Message("BackLevel");
+        uiManager.OpenUI(UIType.TransitionsView, true);
+        yield return new WaitForSeconds(1.4f);
+        if (sceneObj)
+        {
+            Destroy(sceneObj);
+            Resources.UnloadUnusedAssets();
+        }
+        if (_playerController)
+        {
+            Destroy(_playerController.gameObject);
+        }
+        uiManager.OpenUI(UIType.LevelView, true);
     }
 
+    private GameObject sceneObj;
+    public void LoadScene(string name)
+    {
+
+        _playerController = playerManager.CreatePlayer(_currentRole);
+        uiManager.OpenUI(UIType.TransitionsView, true);
+        var transition = uiManager.GetUI<TransitionsView>(UIType.TransitionsView);
+        sceneManager.LoadAsync(name, obj =>
+        {
+            DebugLog.Message("Load");
+            uiManager.CloseUI();
+            uiManager.OpenUI(UIType.GameView);
+            sceneObj = obj;
+        });
+    }
 }

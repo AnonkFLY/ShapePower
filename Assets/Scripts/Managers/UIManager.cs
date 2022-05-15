@@ -64,15 +64,17 @@ public class UIManager
         }
         return panel;
     }
-    private T GetUI<T>(UIType type) where T : UIBase
+    public T GetUI<T>(UIType type) where T : UIBase
     {
-        _instanceUI.TryGetValue(type, out var panel);
+        var panel = GetUI(type);
         return panel as T;
     }
     private UIBase InstanceUIPanel(UIType uIType)
     {
         //总之就是获取GameObject实例化然后获取UIBase组件
-        var result = GameObject.Instantiate(_uiAssets.GetUIObj(uIType), _canvesTrans).GetComponent<UIBase>();
+        var result = GameObject.Instantiate(_uiAssets.GetUIObj(uIType), _canvesTrans.Find("UI")).GetComponent<UIBase>();
+        if(uIType==UIType.TransitionsView)
+            result.transform.SetParent(_canvesTrans.Find("UIOverlay"));
         result.RegisterUI(this);
         return result;
     }
@@ -81,5 +83,6 @@ public enum UIType
 {
     StartView,
     LevelView,
-    TransitionsView
+    TransitionsView,
+    GameView
 }

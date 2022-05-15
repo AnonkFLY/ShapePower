@@ -10,7 +10,6 @@ public class SceneData
     private bool isUnlocked;
     public Sprite sceneSprite;
     public Action onUnLock;
-
     public bool IsUnlocked { get => isUnlocked; set {
         isUnlocked = value;
         if(value)
