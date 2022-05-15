@@ -13,12 +13,12 @@ public class GameManager : MonoBehaviour
     public UIManager uiManager;
     public SceneManager sceneManager;
     public PlayerManager playerManager;
+    public InputManager inputManager = new InputManager();
 
     [Header("Requirement")]
     [SerializeField] private UIAssets _uiAssets;
     [SerializeField] private UIType _startOpen;
     //事件
-    public Action<RoleBase, int> onRoleChange;
     public Action onUIUpdate;
     [SerializeField]
     private RoleBase _currentRole;
@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         SingleInit();
         ManangerInit();
         Application.targetFrameRate = 60;
-        onRoleChange = new Action<RoleBase, int>(OnRoleChange);
         _moneyView = GetComponentInChildren<MoneyView>();
     }
 
@@ -62,8 +61,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void OnRoleChange(RoleBase choose, int index)
+    public void OnRoleChange(RoleBase choose, int index)
     {
+        print($"On Choose {choose.name}");
         _currentRole = choose;
         archiveManager.SetChoose(index);
     }
@@ -108,8 +108,6 @@ public class GameManager : MonoBehaviour
     private GameObject sceneObj;
     public void LoadScene(string name)
     {
-
-        _playerController = playerManager.CreatePlayer(_currentRole);
         uiManager.OpenUI(UIType.TransitionsView, true);
         var transition = uiManager.GetUI<TransitionsView>(UIType.TransitionsView);
         sceneManager.LoadAsync(name, obj =>
@@ -118,6 +116,7 @@ public class GameManager : MonoBehaviour
             uiManager.CloseUI();
             uiManager.OpenUI(UIType.GameView);
             sceneObj = obj;
+            _playerController = playerManager.CreatePlayer(_currentRole);
         });
     }
 }

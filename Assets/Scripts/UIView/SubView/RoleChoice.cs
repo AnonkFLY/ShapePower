@@ -62,7 +62,8 @@ public class RoleChoice : MonoBehaviour, IJumpable
     {
         if (!isOn)
             return;
-        GameManager.Instance.onRoleChange?.Invoke(roleData, _roleIndex);
+        DebugLog.Message($"Click {_roleIndex}");
+        GameManager.Instance.OnRoleChange(roleData, _roleIndex);
         _brieflyCanvas.alpha = 1;
         timer = 1.5f;
     }
@@ -75,7 +76,7 @@ public class RoleChoice : MonoBehaviour, IJumpable
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                _brieflyCanvas.DOFade(0,0.6f);
+                _brieflyCanvas.DOFade(0, 0.6f);
             }
         }
     }

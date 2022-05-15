@@ -26,18 +26,19 @@ public class LevelView : UIBase, IUpdatable
         sceneViews = GetComponentsInChildren<SceneView>();
         _archive = GameManager.Instance.archiveManager;
         sceneDatas = GameManager.Instance.sceneManager.scenesData;
+
+        InitRoleData();
+        InitLevelData();
         var chooseRole = roleChoices[_archive.archiveObj.choose];
         chooseRole.OnClick(true);
         chooseRole.GetComponent<Toggle>().isOn = true;
-        InitRoleData();
-        InitLevelData();
     }
 
     private void InitRoleData()
     {
         for (int i = 0; i < roleChoices.Length; i++)
         {
-            if (_archive.archiveObj.roles.Length > i)
+            if (_archive.archiveObj.roles != null && _archive.archiveObj.roles.Length > i)
             {
                 var role = _archive.archiveObj.roles[i];
                 if (role != null)

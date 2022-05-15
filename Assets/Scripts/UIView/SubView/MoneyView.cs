@@ -26,9 +26,10 @@ public class MoneyView : MonoBehaviour
     {
         isAnimating = true;
         var wait = new WaitForEndOfFrame();
-        while (value < changeValue)
+        while (value != changeValue)
         {
-            value = (int)Mathf.Lerp(value, changeValue, 0.1f) + 1;
+            var i = (value > changeValue ? -1 : 1);
+            value = (int)Mathf.Lerp(value, changeValue, 0.1f) + i;
             moneyText.text = "Money: " + value;
             yield return wait;
         }
