@@ -4,8 +4,7 @@ using UnityEngine.UI;
 
 public class EnterButton : MonoBehaviour
 {
-    private EventButton _button;
-    public event Action onClickEvent;
+    public EventButton button;
     private Image _images;
     [SerializeField]
     private Color normalColor = Color.white;
@@ -13,11 +12,11 @@ public class EnterButton : MonoBehaviour
     private Color highlightedColor = Color.grey;
     private void Awake()
     {
-        _button = GetComponentInChildren<EventButton>();
+        button = GetComponentInChildren<EventButton>();
         _images = GetComponent<Image>();
-        _button.onClick += OnClick;
-        _button.onDown += OnEnter;
-        _button.onExit += OnExit;
+        button.onClick += OnClick;
+        button.onDown += OnEnter;
+        button.onExit += OnExit;
     }
     private void OnEnter()
     {
@@ -29,8 +28,6 @@ public class EnterButton : MonoBehaviour
     }
     private void OnClick()
     {
-        _images.color = normalColor;    
-        onClickEvent?.Invoke();
-        print("Click");
+        _images.color = normalColor;
     }
 }

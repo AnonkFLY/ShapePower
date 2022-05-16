@@ -12,7 +12,7 @@ public class GameView : UIBase, IUpdatable
     private StopView _stopView;
     [SerializeField]
     private Transform _silderTrans;
-    private SliderView _sliderView;
+    public SliderView sliderView;
     [SerializeField] private TMP_Text _infoText;
     private Vector3 _orginCameraPos;
     public override void RegisterUI(UIManager uiManager)
@@ -22,7 +22,7 @@ public class GameView : UIBase, IUpdatable
         _stopView = GetComponentInChildren<StopView>();
         _stopButton.onClick.AddListener(ChangeState);
         _stopView.onStop += () => { isStop = false; };
-        _sliderView = new SliderView(_silderTrans);
+        sliderView = new SliderView(_silderTrans);
         _orginCameraPos = Camera.main.transform.position;
     }
     private float _timer;
@@ -59,7 +59,7 @@ public class GameView : UIBase, IUpdatable
     {
         base.Open();
         Camera.main.transform.position = _orginCameraPos;
-        _sliderView.SetValue(1);
+        sliderView.SetValue(1);
     }
     public override void Close()
     {

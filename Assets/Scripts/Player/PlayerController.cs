@@ -3,17 +3,11 @@ using System.Security.Cryptography;
 using DG.Tweening;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IHurtable
 {
     [SerializeField]
-    private float _rotationSpeed = 100;
-    //[SerializeField]
+    private float angle;
     private RoleBase _playerData;
-    [Header("Camera")]
-    [SerializeField]
-    private float smoothTimer = 10f;
-    [SerializeField]
-    private Vector3 currentSpeed;
     private SpriteRenderer _spriteRenderer;
 
     private int _maxHealth;
@@ -21,57 +15,138 @@ public class PlayerController : MonoBehaviour
     private InputManager _inputManager;
     private Rigidbody2D _rig;
     private Transform _transform;
-    private Transform _cameraTrans;
     private Vector3 _offset;
-
+    [Header("Bullet")]
+    [SerializeField]
+    private GameObject[] bullets;
+    private bool state;
+    private bool isFire;
+    private Transform _firePos;
 
     public void InitPlayerData(RoleBase data)
     {
         _playerData = data;
         _rig = GetComponent<Rigidbody2D>();
         _transform = transform;
-        _cameraTrans = Camera.main.transform;
-        _offset = _cameraTrans.position - _transform.position;
+        _firePos = _transform.GetChild(0);
+        FindObjectOfType<CameraMananger>().SetLockTrans(_transform);
+
 
         _maxHealth = _playerData.health;
         _currentHealth = _playerData.health;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = data.sprite;
-
         InitInput();
     }
-
+    private float _timer;
     private void Update()
     {
-        var over = _transform.position + _offset;
-        //_cameraTrans.position = Vector3.SmoothDamp(_cameraTrans.position, over,ref currentSpeed,smoothTimer,20,Time.deltaTime);
-        _cameraTrans.position = Vector3.Lerp(_cameraTrans.position, over, Time.deltaTime * smoothTimer);
+        if (!isFire)
+            return;
+        if (_timer <= 0)
+            Fire();
+        if (_timer > 0)
+        {
+            _timer -= Time.deltaTime;
+            if (_timer <= 0)
+                Fire();
+        }
     }
+
+
+    // private void FixedUpdate()
+    // {
+    //     if (_rig.velocity.magnitude > _maxSpeed)
+    //     {
+    //         _rig.velocity = Vector3.ClampMagnitude(_rig.velocity, _maxSpeed);
+    //     }
+    // }
 
     private void InitInput()
     {
         _inputManager = GameManager.Instance.inputManager;
         _inputManager.InputButton.onDrag += Move;
+        _inputManager.InputButton.fireButton.button.onDown += FireKey;
+        _inputManager.InputButton.fireButton.button.onClick += FireKeyUp;
+        _inputManager.InputButton.fireButton.button.onExit += FireKeyUp;
+        _inputManager.InputButton.cutoverButton.button.onClick += Cutover;
+    }
+
+    private void Cutover()
+    {
+        state = !state;
+    }
+
+    private void FireKey()
+    {
+        print("Firing");
+        isFire = true;
+    }
+    private void FireKeyUp()
+    {
+        isFire = false;
     }
     private void OnDestroy()
     {
-        if (_inputManager != null && _inputManager.InputButton != null)
-            _inputManager.InputButton.onDrag -= Move;
+        if (_inputManager == null || _inputManager.InputButton == null)
+            return;
+        _inputManager.InputButton.onDrag -= Move;
+        _inputManager.InputButton.fireButton.button.onDown -= FireKey;
+        _inputManager.InputButton.fireButton.button.onClick -= FireKeyUp;
+        _inputManager.InputButton.fireButton.button.onExit -= FireKeyUp;
+        _inputManager.InputButton.cutoverButton.button.onClick -= Cutover;
     }
-
+    public void AddForce(Vector2 force)
+    {
+        currentSpeed += force;
+    }
     private void Dead()
     {
         _spriteRenderer.DOFade(0, 2f);
     }
+    private Vector2 currentSpeed;
     public void Move(Vector2 input)
     {
-        DebugLog.Message(input);
-        _rig.AddForce(input * _playerData.speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-        // var dir = Quaternion.LookRotation(input.normalized);
-        // if (Quaternion.Angle(_transform.rotation, dir) > 1)
+        currentSpeed = Vector2.Lerp(currentSpeed, input * _playerData.speed, Time.deltaTime);
+        // if (input == Vector2.zero)
         // {
-        //     _transform.rotation = Quaternion.Lerp(_transform.rotation, dir, _rotationSpeed * Time.deltaTime);
         // }
-
+        // currentSpeed = Vector2.Lerp(Vector2.zero, input * _playerData.speed, Time.deltaTime);
+        // currentSpeed += (input.normalized - currentSpeed).normalized * _playerData.speed * Time.deltaTime;
+        // if(currentSpeed.sqrMagnitude<0)
+        //     currentSpeed = Vector2.zero;
+        //var dir = input.normalized * _playerData.speed * Time.fixedDeltaTime;
+        //_rig.AddForce(input * _playerData.speed * Time.fixedTime, ForceMode2D.Force);
+        _transform.Translate(currentSpeed * Time.deltaTime, Space.World);
+        if (input == Vector2.zero)
+            return;
+        angle = Vector2.SignedAngle(Vector2.up, input);
+        _transform.eulerAngles = new Vector3(0, 0, angle);
+        // var ratation = Quaternion.LookRotation(new Vector3(angle, 0, 0));
+        // if (Quaternion.Angle(_transform.rotation, ratation) > 1)
+        //     _transform.rotation = Quaternion.Lerp(_transform.rotation, ratation, Time.deltaTime * _rotationSpeed);
+    }
+    public void Fire()
+    {
+        if (!state)
+        {
+            _timer = Instantiate(bullets[_playerData.level - 1], _firePos.position, _transform.rotation).GetComponent<Bullet>()._delayTimer;
+        }
+        else
+        {
+            _timer = Instantiate(bullets[_playerData.level + 5], _firePos.position, _transform.rotation).GetComponent<Bullet>()._delayTimer; ;
+        }
+    }
+    private GameView _gameView;
+    public void Hurt(Damage damage)
+    {
+        if (damage.originDamage == OriginDamage.Player)
+            return;
+        _currentHealth -= damage.damageValue - (damage.damageValue / _playerData.armor);
+        _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);
+        var value = _currentHealth / _maxHealth;
+        if (_gameView == null)
+            _gameView = FindObjectOfType<GameView>();
+        _gameView.sliderView.SetValue(value);
     }
 }

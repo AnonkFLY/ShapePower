@@ -10,6 +10,6 @@ public class Wall : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         other.rigidbody?.AddForce(other.relativeVelocity.normalized * force, ForceMode2D.Impulse);
-        print("hit");
+        //if(other)
     }
 }
