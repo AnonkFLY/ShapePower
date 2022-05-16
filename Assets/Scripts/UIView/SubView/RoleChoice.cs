@@ -83,7 +83,6 @@ public class RoleChoice : MonoBehaviour, IJumpable
 
     public void InitChoiceView(RoleBase roleData, int index, bool isPurchased)
     {
-        DebugLog.Message(brieflyText.text);
         _roleIndex = index;
         this.roleData = roleData;
         roleImage.sprite = roleData.sprite;

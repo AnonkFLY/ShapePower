@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 738028392067735993}
   - component: {fileID: 8514968707405977117}
   - component: {fileID: 6442657154327386984}
+  - component: {fileID: -3130288601794767825}
   m_Layer: 7
   m_Name: Star
   m_TagString: Player
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 0
+  fireDistance: 1
+  _playerData:
+    name: 
+    id: 0
+    briefly: 
+    level: 1
+    levelupPay: 0
+    sprite: {fileID: 0}
+    price: 0
+    health: 0
+    speed: 0
+    armor: 0
   bullets: []
 --- !u!60 &6442657154327386984
 PolygonCollider2D:
@@ -259,6 +272,27 @@ PolygonCollider2D:
       - {x: 0.54800004, y: -0.84000003}
       - {x: 0.54, y: -0.80200005}
       - {x: 0.528, y: -0.74200004}
+--- !u!50 &-3130288601794767825
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4001229234683399772}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: bd9e4684b1aa72d4887ba327b73cd763, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1001 &2500244022170738881
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator BackLevel()
     {
-        DebugLog.Message("BackLevel");
         uiManager.OpenUI(UIType.TransitionsView, true);
         yield return new WaitForSeconds(1.4f);
         if (sceneObj)

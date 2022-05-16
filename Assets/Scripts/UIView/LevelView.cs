@@ -80,12 +80,12 @@ public class LevelView : UIBase, IUpdatable
     }
     public void OpenSubView()
     {
-        StartCoroutine(JumpUpRoleView<RoleChoice>(true, 0.3f, roleChoices));
+        StartCoroutine(JumpUpRoleView<RoleChoice>(true, 0.15f, roleChoices));
         StartCoroutine(JumpUpRoleView<SceneView>(true, 0.15f, sceneViews));
     }
     public void CloseSubView()
     {
-        StartCoroutine(JumpUpRoleView<RoleChoice>(false, 0.15f, roleChoices));
+        StartCoroutine(JumpUpRoleView<RoleChoice>(false, 0.1f, roleChoices));
         StartCoroutine(JumpUpRoleView<SceneView>(false, 0.05f, sceneViews));
     }
     private IEnumerator JumpUpRoleView<T>(bool open, float timer, T[] array) where T : IJumpable

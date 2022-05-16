@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3131168079984070637}
   - component: {fileID: 3131168079984070625}
   - component: {fileID: -1230532223081435872}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Virus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,8 +118,9 @@ MonoBehaviour:
   maxHealth: 30
   currentHealth: 30
   moveSpeed: 3
+  money: 5
   damage:
-    damageValue: 4
+    damageValue: 8
     originDamage: 1
 --- !u!50 &-1230532223081435872
 Rigidbody2D:

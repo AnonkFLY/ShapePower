@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour, IHurtable
 {
     [SerializeField]
     private float angle;
+    [SerializeField]
+    private float fireDistance = 1;
+    [SerializeField]
     private RoleBase _playerData;
     private SpriteRenderer _spriteRenderer;
 
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour, IHurtable
     private bool state;
     private bool isFire;
     private Transform _firePos;
+    private Transform _target;
+    private CameraMananger _camera;
 
     public void InitPlayerData(RoleBase data)
     {
@@ -29,8 +34,8 @@ public class PlayerController : MonoBehaviour, IHurtable
         _rig = GetComponent<Rigidbody2D>();
         _transform = transform;
         _firePos = _transform.GetChild(0);
-        FindObjectOfType<CameraMananger>().SetLockTrans(_transform);
-
+        _camera = FindObjectOfType<CameraMananger>();
+        _camera.SetLockTrans(_transform);
 
         _maxHealth = _playerData.health;
         _currentHealth = _playerData.health;
@@ -79,12 +84,15 @@ public class PlayerController : MonoBehaviour, IHurtable
 
     private void FireKey()
     {
-        print("Firing");
         isFire = true;
+        _camera.SetLockTrans(_firePos.GetChild(0));
+        _camera.StartShakeCamera();
     }
     private void FireKeyUp()
     {
         isFire = false;
+        _camera.SetLockTrans(_transform);
+        _camera.StopShakeCamera();
     }
     private void OnDestroy()
     {
@@ -102,40 +110,48 @@ public class PlayerController : MonoBehaviour, IHurtable
     }
     private void Dead()
     {
-        _spriteRenderer.DOFade(0, 2f);
+        _spriteRenderer.DOFade(0, 2f).onComplete += () => { StartCoroutine(GameManager.Instance.BackLevel()); };
     }
     private Vector2 currentSpeed;
     public void Move(Vector2 input)
     {
         currentSpeed = Vector2.Lerp(currentSpeed, input * _playerData.speed, Time.deltaTime);
-        // if (input == Vector2.zero)
-        // {
-        // }
-        // currentSpeed = Vector2.Lerp(Vector2.zero, input * _playerData.speed, Time.deltaTime);
-        // currentSpeed += (input.normalized - currentSpeed).normalized * _playerData.speed * Time.deltaTime;
-        // if(currentSpeed.sqrMagnitude<0)
-        //     currentSpeed = Vector2.zero;
-        //var dir = input.normalized * _playerData.speed * Time.fixedDeltaTime;
-        //_rig.AddForce(input * _playerData.speed * Time.fixedTime, ForceMode2D.Force);
         _transform.Translate(currentSpeed * Time.deltaTime, Space.World);
+        if (_target != null)
+        {
+            var radius = (_target.position - _transform.position).normalized;
+            _transform.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, radius));
+            return;
+        }
         if (input == Vector2.zero)
             return;
         angle = Vector2.SignedAngle(Vector2.up, input);
         _transform.eulerAngles = new Vector3(0, 0, angle);
-        // var ratation = Quaternion.LookRotation(new Vector3(angle, 0, 0));
-        // if (Quaternion.Angle(_transform.rotation, ratation) > 1)
-        //     _transform.rotation = Quaternion.Lerp(_transform.rotation, ratation, Time.deltaTime * _rotationSpeed);
     }
     public void Fire()
     {
+        _target = RayUtil.FindObjOfLate(_transform.position, 7, 1 << 6, 5);
+
+        Vector2 firePos = _firePos.position;
+        Vector3 euler = _firePos.position - _transform.position;
+        if (_target != null)
+        {
+            euler = (_target.position - _transform.position).normalized;
+            firePos = euler * fireDistance + _transform.position;
+        }
+        Bullet bullet;
         if (!state)
         {
-            _timer = Instantiate(bullets[_playerData.level - 1], _firePos.position, _transform.rotation).GetComponent<Bullet>()._delayTimer;
+            bullet = Instantiate(bullets[_playerData.level - 1], firePos, Quaternion.identity).GetComponent<Bullet>();
         }
         else
         {
-            _timer = Instantiate(bullets[_playerData.level + 5], _firePos.position, _transform.rotation).GetComponent<Bullet>()._delayTimer; ;
+            bullet = Instantiate(bullets[_playerData.level + 5], firePos, Quaternion.identity).GetComponent<Bullet>();
         }
+        var angle = Vector2.SignedAngle(Vector3.up, euler);
+        _transform.position -= euler * (bullet.Recoil * Time.deltaTime);
+        bullet.Init(angle);
+        _timer = bullet._delayTimer;
     }
     private GameView _gameView;
     public void Hurt(Damage damage)
@@ -144,9 +160,11 @@ public class PlayerController : MonoBehaviour, IHurtable
             return;
         _currentHealth -= damage.damageValue - (damage.damageValue / _playerData.armor);
         _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);
-        var value = _currentHealth / _maxHealth;
+        var value = (float)_currentHealth / (float)_maxHealth;
         if (_gameView == null)
             _gameView = FindObjectOfType<GameView>();
         _gameView.sliderView.SetValue(value);
+        if (_currentHealth <= 0)
+            Dead();
     }
 }

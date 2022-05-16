@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6868406534607734531}
   - component: {fileID: 2541232364296450215}
   - component: {fileID: 4250251903330778249}
+  - component: {fileID: 8609892404722883309}
   m_Layer: 7
   m_Name: Rectangle
   m_TagString: Player
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 0
+  fireDistance: 1
+  _playerData:
+    name: 
+    id: 0
+    briefly: 
+    level: 1
+    levelupPay: 0
+    sprite: {fileID: 0}
+    price: 0
+    health: 0
+    speed: 0
+    armor: 0
   bullets: []
 --- !u!61 &4250251903330778249
 BoxCollider2D:
@@ -127,6 +140,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.8, y: 1.8}
   m_EdgeRadius: 0
+--- !u!50 &8609892404722883309
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127020600591902950}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: bd9e4684b1aa72d4887ba327b73cd763, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1001 &4141864626166417231
 PrefabInstance:
   m_ObjectHideFlags: 0

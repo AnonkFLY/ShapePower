@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4652467649380806829}
   - component: {fileID: 4361134429290055433}
   - component: {fileID: 1424835991362816636}
+  - component: {fileID: -6590563392191613409}
   m_Layer: 7
   m_Name: Triangle
   m_TagString: Player
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angle: 0
+  fireDistance: 1
+  _playerData:
+    name: 
+    id: 0
+    briefly: 
+    level: 1
+    levelupPay: 0
+    sprite: {fileID: 0}
+    price: 0
+    health: 0
+    speed: 0
+    armor: 0
   bullets: []
 --- !u!60 &1424835991362816636
 PolygonCollider2D:
@@ -214,6 +227,27 @@ PolygonCollider2D:
       - {x: 0.88400006, y: -0.76400006}
       - {x: 0.88400006, y: -0.76000005}
       - {x: 0.864, y: -0.72}
+--- !u!50 &-6590563392191613409
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018980036286947144}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 10
+  m_LinearDrag: 0.5
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: bd9e4684b1aa72d4887ba327b73cd763, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1001 &5985406699643584012
 PrefabInstance:
   m_ObjectHideFlags: 0

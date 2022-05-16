@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     [SerializeField] protected int maxHealth = 30;
     [SerializeField] protected int currentHealth = 30;
     [SerializeField] protected float moveSpeed = 3;
+    [SerializeField] protected int money = 5;
     protected Transform _target;
     protected Transform _transform;
     protected Rigidbody2D _rig;
@@ -21,20 +22,26 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     {
         Behavior();
     }
+    public virtual void Dead()
+    {
+        GameManager.Instance.archiveManager.AddMoney(money);
+        Destroy(gameObject);
+    }
     public abstract void Behavior();
     protected void MoveToPlayer()
     {
         var dir = (_target.position - _transform.position).normalized * moveSpeed;
         _rig.velocity = dir;
-        _transform.eulerAngles = new Vector3(0,0,Vector2.Angle(Vector2.up,dir));
-        Debug.DrawRay(_transform.position,dir*3);
+        _transform.eulerAngles = new Vector3(0, 0, Vector2.Angle(Vector2.up, dir));
     }
 
     public void Hurt(Damage damage)
     {
-        print("Be Hurt");
         if (damage.originDamage == OriginDamage.Enemy)
             return;
+        print("Be Hurt");
         currentHealth = Math.Clamp(currentHealth - damage.damageValue, 0, maxHealth);
+        if(currentHealth<=0)
+            Dead();
     }
 }

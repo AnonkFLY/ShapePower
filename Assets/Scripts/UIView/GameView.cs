@@ -25,19 +25,6 @@ public class GameView : UIBase, IUpdatable
         sliderView = new SliderView(_silderTrans);
         _orginCameraPos = Camera.main.transform.position;
     }
-    private float _timer;
-    private float _maxTimer;
-    private void FixedUpdate()
-    {
-        if (!isOpen)
-            return;
-        _timer -= Time.fixedDeltaTime;
-
-    }
-    private void TimeOutOver()
-    {
-
-    }
     public void OnUpdateView()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
