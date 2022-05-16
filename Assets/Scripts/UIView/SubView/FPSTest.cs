@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class FPSTest : MonoBehaviour
 {
-    private TMP_Text text;
+    public TMP_Text text;
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<TMP_Text>();
-        StartCoroutine(FPSCoroutine());
+        //StartCoroutine(FPSCoroutine());
     }
     IEnumerator FPSCoroutine()
     {

@@ -21,7 +21,7 @@ public class SceneManager
     {
         var request = Resources.LoadAsync(path,typeof(GameObject));
         yield return request;
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(1.45f);
         var obj = request.asset as GameObject;
         obj = GameObject.Instantiate(obj);
         callBack?.Invoke(obj);

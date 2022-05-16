@@ -14,15 +14,20 @@ public class InputButton : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndD
     [SerializeField]
     private float maxDistance = 100;
     public Action<Vector2> onDrag;
+    public EnterButton fireButton;
+    public EnterButton cutoverButton;
     private void Awake()
     {
         _transform = transform;
+        maxDistance = Screen.height * (maxDistance / 600);
         _originPos = _transform.position;
     }
 
-    void FixedUpdate()
+    private void Update()
     {
-        onDrag?.Invoke(_offset/maxDistance);
+        if (Time.timeScale <= 0)
+            return;
+        onDrag?.Invoke(_offset / maxDistance);
     }
     public void OnBeginDrag(PointerEventData eventData)
     {

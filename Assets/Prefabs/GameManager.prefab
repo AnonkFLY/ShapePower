@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1072634203
 RectTransform:
   m_ObjectHideFlags: 0
@@ -72,7 +72,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -350, y: 190}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 20}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1072634206
@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92c5d913e1aef35499b38a8bfe51af92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
 --- !u!1 &1593296557912874827
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneManager:
     scenesData:
-    - sceneName: test
+    - sceneName: SceneBase
       sceneSprite: {fileID: 21300000, guid: 6f8408798bb9aa540bdf8719676972f2, type: 3}
     - sceneName: 1
       sceneSprite: {fileID: 21300000, guid: cc672386ee892a6439097046a3d3fa61, type: 3}
@@ -242,9 +243,23 @@ MonoBehaviour:
     - sceneName: 4
       sceneSprite: {fileID: 21300000, guid: 2674571471c854642bdce8013e27f855, type: 3}
   playerManager:
-    playerPrefab: {fileID: 6346608643879638113, guid: 473a4c526e3136b4982b76686b800fe1, type: 3}
+    playerPrefab:
+    - {fileID: 3094103725083351654, guid: f7229b6a0d3aa6f4f8445e490d7a7fc4, type: 3}
+    - {fileID: 7127020600591902950, guid: f8c344856aa0396458ee9cfc478ff354, type: 3}
+    - {fileID: 0}
   _uiAssets: {fileID: 11400000, guid: 85912b745e955fc4c9805e8a57679e5b, type: 2}
   _startOpen: 0
+  _currentRole:
+    name: 
+    id: 0
+    briefly: 
+    level: 1
+    levelupPay: 0
+    sprite: {fileID: 0}
+    price: 0
+    health: 0
+    speed: 0
+    armor: 0
 --- !u!1 &1593296557935543930
 GameObject:
   m_ObjectHideFlags: 0

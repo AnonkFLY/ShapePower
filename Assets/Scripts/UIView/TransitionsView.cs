@@ -12,12 +12,16 @@ public class TransitionsView : UIBase
         base.RegisterUI(uiManager);
         _animator = GetComponent<Animator>();
         var trans = GetComponentsInChildren<RectTransform>();
-        var height = Screen.height / 4;
-        for (int i = 1; i < trans.Length; i++)
-        {
-            trans[i].sizeDelta = new Vector2(0, height);
-            trans[i].localPosition = Vector3.down * ((i - 1) * height);
-        }
+        // int height, width;
+
+        // height = Screen.height / 4;
+        // width = Screen.width / 4;
+        // FindObjectOfType<FPSTest>().text.text = height.ToString() + "," + width;
+        // for (int i = 1; i < trans.Length; i++)
+        // {
+        //     trans[i].sizeDelta = new Vector2(0, height);
+        //     trans[i].localPosition = Vector3.down * ((i - 1) * height);
+        // }
     }
     public override void Close()
     {

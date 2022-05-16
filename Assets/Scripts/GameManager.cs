@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
         var transition = uiManager.GetUI<TransitionsView>(UIType.TransitionsView);
         sceneManager.LoadAsync(name, obj =>
         {
-            DebugLog.Message("Load");
             uiManager.CloseUI();
             uiManager.OpenUI(UIType.GameView);
             sceneObj = obj;

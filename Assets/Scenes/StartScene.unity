@@ -262,6 +262,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: playerManager.playerPrefab.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: playerManager.playerPrefab.Array.data[2]
+      value: 
+      objectReference: {fileID: 9018980036286947144, guid: 48b0a2c969720524c851e61694d14851, type: 3}
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: playerManager.playerPrefab.Array.data[3]
+      value: 
+      objectReference: {fileID: 4001229234683399772, guid: 0d21726a6d09b0944a958713db7d0574, type: 3}
     - target: {fileID: 1593296557912874825, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
       propertyPath: m_RootOrder
       value: 2

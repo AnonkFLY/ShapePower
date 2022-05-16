@@ -14,6 +14,7 @@ public class GameView : UIBase, IUpdatable
     private Transform _silderTrans;
     private SliderView _sliderView;
     [SerializeField] private TMP_Text _infoText;
+    private Vector3 _orginCameraPos;
     public override void RegisterUI(UIManager uiManager)
     {
         base.RegisterUI(uiManager);
@@ -22,6 +23,7 @@ public class GameView : UIBase, IUpdatable
         _stopButton.onClick.AddListener(ChangeState);
         _stopView.onStop += () => { isStop = false; };
         _sliderView = new SliderView(_silderTrans);
+        _orginCameraPos = Camera.main.transform.position;
     }
     private float _timer;
     private float _maxTimer;
@@ -34,7 +36,7 @@ public class GameView : UIBase, IUpdatable
     }
     private void TimeOutOver()
     {
-        
+
     }
     public void OnUpdateView()
     {
@@ -56,10 +58,11 @@ public class GameView : UIBase, IUpdatable
     public override void Open()
     {
         base.Open();
+        Camera.main.transform.position = _orginCameraPos;
         _sliderView.SetValue(1);
     }
     public override void Close()
     {
-        canvasGroup.DOFade(0,1.5f);
-    }   
+        canvasGroup.DOFade(0, 1.5f);
+    }
 }

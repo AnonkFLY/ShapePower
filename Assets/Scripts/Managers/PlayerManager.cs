@@ -6,10 +6,10 @@ using UnityEngine;
 public class PlayerManager 
 {
     [SerializeField]
-    private GameObject playerPrefab;
+    private GameObject[] playerPrefab;
     public PlayerController CreatePlayer(RoleBase data)
     {
-        var player = GameObject.Instantiate(playerPrefab).GetComponent<PlayerController>();
+        var player = GameObject.Instantiate(playerPrefab[data.id]).GetComponent<PlayerController>();
         player.InitPlayerData(data);
         return player;
     }

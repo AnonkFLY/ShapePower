@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Scene
+    uniqueID: 1249607531
+    locked: 0
+  - name: Entity
+    uniqueID: 1334706699
+    locked: 0
+  - name: Over
+    uniqueID: 3773662167
+    locked: 0
