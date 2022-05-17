@@ -106,15 +106,18 @@ public class PlayerController : MonoBehaviour, IHurtable
     }
     public void AddForce(Vector2 force)
     {
-        currentSpeed += force;
+        currentSpeed += force / _rig.mass;
     }
     private void Dead()
     {
-        _spriteRenderer.DOFade(0, 2f).onComplete += () => { StartCoroutine(GameManager.Instance.BackLevel()); };
+        GetComponent<Collider2D>().enabled = false;
+        _spriteRenderer.DOFade(0, 2f).onComplete += () => { GameManager.Instance.uiManager.OpenUI(UIType.GameLose, true); };
     }
     private Vector2 currentSpeed;
     public void Move(Vector2 input)
     {
+        if (_currentHealth <= 0)
+            input = Vector2.zero;
         currentSpeed = Vector2.Lerp(currentSpeed, input * _playerData.speed, Time.deltaTime);
         _transform.Translate(currentSpeed * Time.deltaTime, Space.World);
         if (_target != null)
@@ -130,6 +133,8 @@ public class PlayerController : MonoBehaviour, IHurtable
     }
     public void Fire()
     {
+        if (_currentHealth <= 0)
+            return;
         _target = RayUtil.FindObjOfLate(_transform.position, 7, 1 << 6, 5);
 
         Vector2 firePos = _firePos.position;
@@ -157,6 +162,8 @@ public class PlayerController : MonoBehaviour, IHurtable
     public void Hurt(Damage damage)
     {
         if (damage.originDamage == OriginDamage.Player)
+            return;
+        if (_currentHealth <= 0)
             return;
         _currentHealth -= damage.damageValue - (damage.damageValue / _playerData.armor);
         _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);

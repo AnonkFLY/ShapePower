@@ -49,14 +49,24 @@ public class ShapePowerArchive : ArchiveManager<ShapePowerSave>
     }
     public int UnLockNextLevel()
     {
-        for(int i =0;i<archiveObj.levelCount;i++)
+        for (int i = 0; i < archiveObj.levelCount; i++)
         {
-            if(!archiveObj.GetLevelLocked(i))
+            if (!archiveObj.GetLevelLocked(i))
             {
-                archiveObj.SetLevelUnlocked(i);
                 return i;
             }
         }
         return -1;
+    }
+    public void UnLockLevel(int i)
+    {
+        archiveObj.SetLevelUnlocked(i);
+        Saved();
+    }
+
+    public void InitRoleData(RoleBase[] roleChoices)
+    {
+        archiveObj.roles = roleChoices;
+        Saved();
     }
 }

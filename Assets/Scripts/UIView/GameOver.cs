@@ -23,9 +23,7 @@ public class GameOver : UIBase
         if (type == UIType.GameWin)
         {
             GameManager.Instance.UnLockNextLevel();
-            DebugLog.Message("解锁下一关");
         }
-        DebugLog.Message("返回主菜单");
         StartCoroutine(GameManager.Instance.BackLevel());
     }
 

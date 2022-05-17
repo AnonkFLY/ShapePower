@@ -120,7 +120,7 @@ MonoBehaviour:
   moveSpeed: 3
   money: 5
   damage:
-    damageValue: 8
+    damageValue: 999
     originDamage: 1
 --- !u!50 &-1230532223081435872
 Rigidbody2D:

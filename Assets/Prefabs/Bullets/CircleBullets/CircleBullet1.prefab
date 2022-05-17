@@ -120,3 +120,4 @@ MonoBehaviour:
   _delayTimer: 0.1
   speed: 10
   _offset: 5
+  _recoil: 3

@@ -25,6 +25,10 @@ public class GameView : UIBase, IUpdatable
         sliderView = new SliderView(_silderTrans);
         _orginCameraPos = Camera.main.transform.position;
     }
+    private void SetInfo(int info)
+    {
+        _infoText.text = "<size=36>remaining enemies:</size>\n" + info;
+    }
     public void OnUpdateView()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -45,15 +49,17 @@ public class GameView : UIBase, IUpdatable
     public override void Open()
     {
         base.Open();
-        Camera.main.transform.position = _orginCameraPos;
+        //FindObjectOfType<CameraMananger>().ResetPosition();
+
         sliderView.SetValue(1);
+        FindObjectOfType<SceneBase>().RegisterEnemyCount(SetInfo);
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
     public override void Close()
     {
-        canvasGroup.DOFade(0, 1.5f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
+        canvasGroup.DOFade(0, 1.5f);
     }
 }

@@ -46,7 +46,8 @@ public class GameManager : MonoBehaviour
         var i = archiveManager.UnLockNextLevel();
         if (i == -1)
             return;
-        sceneManager.SetUnlocked(i);
+        if (sceneManager.SetUnlocked(i))
+            archiveManager.UnLockLevel(i);
     }
     private void Start()
     {
@@ -101,11 +102,12 @@ public class GameManager : MonoBehaviour
         {
             Destroy(_playerController.gameObject);
         }
+        print("Open");
         uiManager.OpenUI(UIType.LevelView, true);
     }
 
     private GameObject sceneObj;
-    public void LoadScene(string name)
+    public void LoadScene(string name, int index)
     {
         uiManager.OpenUI(UIType.TransitionsView, true);
         var transition = uiManager.GetUI<TransitionsView>(UIType.TransitionsView);
@@ -115,6 +117,6 @@ public class GameManager : MonoBehaviour
             uiManager.OpenUI(UIType.GameView);
             sceneObj = obj;
             _playerController = playerManager.CreatePlayer(_currentRole);
-        });
+        }, index);
     }
 }

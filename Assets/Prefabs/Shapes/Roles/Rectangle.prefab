@@ -113,7 +113,17 @@ MonoBehaviour:
     health: 0
     speed: 0
     armor: 0
-  bullets: []
+  bullets:
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
 --- !u!61 &4250251903330778249
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -232,21 +232,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneManager:
     scenesData:
-    - sceneName: SceneBase
+    - sceneName: Level1
       sceneSprite: {fileID: 21300000, guid: 6f8408798bb9aa540bdf8719676972f2, type: 3}
-    - sceneName: 1
+    - sceneName: Level2
       sceneSprite: {fileID: 21300000, guid: cc672386ee892a6439097046a3d3fa61, type: 3}
-    - sceneName: 222
+    - sceneName: Level3
       sceneSprite: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
-    - sceneName: 3
+    - sceneName: Level4
       sceneSprite: {fileID: 21300000, guid: e7df16fcb59cac644837485ab6f457f7, type: 3}
-    - sceneName: 4
+    - sceneName: Level5
       sceneSprite: {fileID: 21300000, guid: 2674571471c854642bdce8013e27f855, type: 3}
   playerManager:
     playerPrefab:
     - {fileID: 3094103725083351654, guid: f7229b6a0d3aa6f4f8445e490d7a7fc4, type: 3}
     - {fileID: 7127020600591902950, guid: f8c344856aa0396458ee9cfc478ff354, type: 3}
-    - {fileID: 0}
+    - {fileID: 9018980036286947144, guid: 48b0a2c969720524c851e61694d14851, type: 3}
+    - {fileID: 4001229234683399772, guid: 0d21726a6d09b0944a958713db7d0574, type: 3}
   _uiAssets: {fileID: 11400000, guid: 85912b745e955fc4c9805e8a57679e5b, type: 2}
   _startOpen: 0
   _currentRole:

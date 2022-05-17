@@ -49,6 +49,7 @@ public class LevelView : UIBase, IUpdatable
             }
             var unLock = _archive.archiveObj.GetRoleIsPurchased(i);
             roleChoices[i].InitChoiceView(datas[i], i, unLock);
+            _archive.InitRoleData(datas);
         }
     }
     private void InitLevelData()

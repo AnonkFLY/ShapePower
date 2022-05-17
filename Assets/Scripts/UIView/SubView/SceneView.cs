@@ -15,9 +15,11 @@ public class SceneView : MonoBehaviour, IJumpable
     private Transform _body;
     private SceneManager _sceneManager;
     private bool isClose = true;
+    private int _index = -1;
     public void InitSceneView(SceneData data, int index)
     {
         _data = data;
+        _index = index;
         _transform = transform;
         _body = _transform.GetChild(0);
         _transform.localScale = Vector3.zero;
@@ -51,7 +53,7 @@ public class SceneView : MonoBehaviour, IJumpable
         Jump();
         _body.DOScale(1, 0.2f);
         isClose = true;
-        GameManager.Instance.LoadScene(_data.sceneName);
+        GameManager.Instance.LoadScene(_data.sceneName, _index);
     }
     public void Jump()
     {
