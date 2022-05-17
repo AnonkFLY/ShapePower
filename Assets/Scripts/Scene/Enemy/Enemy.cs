@@ -12,11 +12,13 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     protected Transform _target;
     protected Transform _transform;
     protected Rigidbody2D _rig;
+    protected SceneBase _scenes;
     private void Awake()
     {
         _transform = transform;
         _rig = GetComponent<Rigidbody2D>();
         _target = FindObjectOfType<PlayerController>().transform;
+        _scenes = FindObjectOfType<SceneBase>();
     }
     private void FixedUpdate()
     {
@@ -25,6 +27,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     public virtual void Dead()
     {
         GameManager.Instance.archiveManager.AddMoney(money);
+        _scenes.EnemyDead();
         Destroy(gameObject);
     }
     public abstract void Behavior();

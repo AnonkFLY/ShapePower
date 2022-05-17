@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+
+using System;
 using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
@@ -14,7 +13,8 @@ public abstract class Bullet : MonoBehaviour
     private float _offset = 10;
     [SerializeField]
     private float _recoil = 0.1f;
-    private Transform _transform;
+    protected Transform _transform;
+    protected Action onUpdate;
 
     public float Recoil { get => _recoil;}
 
@@ -25,12 +25,13 @@ public abstract class Bullet : MonoBehaviour
     public void Init(float eluer)
     {
         _transform.Rotate(0, 0, eluer, Space.Self);
-        _transform.Rotate(Vector3.forward * Random.Range(-_offset, _offset));
+        _transform.Rotate(Vector3.forward * UnityEngine.Random.Range(-_offset, _offset));
         Destroy(gameObject, 3f);
     }
     void Update()
     {
         _transform.Translate(_transform.up * speed * Time.deltaTime, Space.World);
+        onUpdate?.Invoke();
     }
     private void OnCollisionEnter2D(Collision2D other)
     {

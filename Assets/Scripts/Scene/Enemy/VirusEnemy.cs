@@ -16,7 +16,7 @@ public class VirusEnemy : Enemy
         other.transform.GetComponent<IHurtable>()?.Hurt(damage);
         if (other.transform.CompareTag("Player"))
         {
-            other.transform.GetComponent<PlayerController>().AddForce(_transform.up*damage.damageValue);
+            other.transform.GetComponent<PlayerController>().AddForce(_transform.up);
             Destroy(gameObject);
         }
     }

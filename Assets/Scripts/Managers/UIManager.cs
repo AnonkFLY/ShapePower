@@ -84,5 +84,7 @@ public enum UIType
     StartView,
     LevelView,
     TransitionsView,
-    GameView
+    GameView,
+    GameWin,
+    GameLose
 }

@@ -1,19 +1,30 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
+    [SerializeField] private Color color = Color.white;
     [SerializeField] private List<EnemyGroup> _enemyGroups;
     [SerializeField] private bool isRandom = false;
     [SerializeField] private float delay = 3;
-    public bool over;
+    public Action onOver;
     private Transform _transform;
     private void Awake()
     {
         _transform = transform;
         StartCoroutine(SpawnEnemy());
+    }
+    public int GetCout()
+    {
+        int i = 0;
+        foreach (var item in _enemyGroups)
+        {
+            i += item.count;
+        }
+        return i;
     }
 
     private IEnumerator SpawnEnemy()
@@ -40,10 +51,25 @@ public class SpawnPoint : MonoBehaviour
                 }
             }
         }
+        while (_transform.childCount > 0)
+        {
+            yield return delay;
+        }
+        onOver?.Invoke();
     }
     private void RemoveListAt<T>(List<T> list, int index)
     {
         list[index] = list[list.Count - 1];
         list.RemoveAt(list.Count - 1);
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = color;
+        if (_enemyGroups == null)
+            return;
+        foreach (var item in _enemyGroups)
+        {
+            Gizmos.DrawWireSphere(transform.position, item.random);
+        }
     }
 }

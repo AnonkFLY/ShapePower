@@ -47,9 +47,13 @@ public class GameView : UIBase, IUpdatable
         base.Open();
         Camera.main.transform.position = _orginCameraPos;
         sliderView.SetValue(1);
+        canvasGroup.interactable = true;
+        canvasGroup.blocksRaycasts = true;
     }
     public override void Close()
     {
         canvasGroup.DOFade(0, 1.5f);
+        canvasGroup.interactable = false;
+        canvasGroup.blocksRaycasts = false;
     }
 }
