@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     [SerializeField] protected int currentHealth = 30;
     [SerializeField] protected float moveSpeed = 3;
     [SerializeField] protected int money = 5;
+    [SerializeField] protected float mass = 3;
     protected Transform _target;
     protected Transform _transform;
     protected Rigidbody2D _rig;
@@ -25,7 +26,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
         Behavior();
     }
     public virtual void Dead()
-    {
+    { 
         GameManager.Instance.archiveManager.AddMoney(money);
         _scenes.EnemyDead();
         Destroy(gameObject);
@@ -34,7 +35,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     protected void MoveToPlayer()
     {
         var dir = (_target.position - _transform.position).normalized * moveSpeed;
-        _rig.velocity = dir;
+        _rig.velocity = Vector2.Lerp(_rig.velocity, dir, mass * Time.fixedDeltaTime);
         _transform.eulerAngles = new Vector3(0, 0, Vector2.Angle(Vector2.up, dir));
     }
 
@@ -44,7 +45,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
             return;
         print("Be Hurt");
         currentHealth = Math.Clamp(currentHealth - damage.damageValue, 0, maxHealth);
-        if(currentHealth<=0)
+        if (currentHealth <= 0)
             Dead();
     }
 }

@@ -27,11 +27,13 @@ public class TransitionsView : UIBase
     {
         //_animator.Play(UIManager.close);
         _animator.SetBool("Open", false);
+        AudioManager.Instance.PlaySoundEffect(0);
     }
     public override void Open()
     {
         _animator.SetBool("Open", true);
         _animator.Play(UIManager.open);
+        AudioManager.Instance.PlaySoundEffect(0);
     }
     public void Completed()
     {

@@ -119,5 +119,6 @@ MonoBehaviour:
     originDamage: 0
   _delayTimer: 0.1
   speed: 10
-  _offset: 5
-  _recoil: 3
+  _offset: 7.5
+  _recoil: 4
+  hitCount: 15

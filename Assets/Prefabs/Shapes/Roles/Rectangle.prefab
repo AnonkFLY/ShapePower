@@ -119,11 +119,11 @@ MonoBehaviour:
   - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
   - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
   - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
-  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
-  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
-  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
-  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
-  - {fileID: 5871304388414066022, guid: fa5d952625bcfd648b93b658746eef85, type: 3}
+  - {fileID: 5871304388414066022, guid: d4c78eb46738f6f4babd5332cf815b80, type: 3}
+  - {fileID: 5871304388414066022, guid: d4c78eb46738f6f4babd5332cf815b80, type: 3}
+  - {fileID: 5871304388414066022, guid: d4c78eb46738f6f4babd5332cf815b80, type: 3}
+  - {fileID: 5871304388414066022, guid: d4c78eb46738f6f4babd5332cf815b80, type: 3}
+  - {fileID: 5871304388414066022, guid: d4c78eb46738f6f4babd5332cf815b80, type: 3}
 --- !u!61 &4250251903330778249
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &4141864626166417231
 PrefabInstance:
   m_ObjectHideFlags: 0

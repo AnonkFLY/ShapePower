@@ -27,7 +27,6 @@ public class ShapePowerArchive : ArchiveManager<ShapePowerSave>
 
     private void MoneyChange()
     {
-        DebugLog.Message(archiveObj.money);
         onMoneyChange?.Invoke(archiveObj.money);
     }
 

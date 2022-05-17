@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3714092335678909060}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0, y: -0.042, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8535620937637784051}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -521305129
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4572f42466b2d1544b3819c97af1c4df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
   m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 8535620937637784051}
   - component: {fileID: 7836870386312749699}
   - component: {fileID: 2405483379240691139}
-  - component: {fileID: -350679470248316360}
+  - component: {fileID: -733024696662355152}
   m_Layer: 8
-  m_Name: CircleBullet2
+  m_Name: StarBullet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ Transform:
   m_GameObject: {fileID: 5871304388414066022}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5429682903478360990}
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 1334706699
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cc672386ee892a6439097046a3d3fa61, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -187,7 +187,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.9
---- !u!114 &-350679470248316360
+--- !u!114 &-733024696662355152
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,14 +196,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5871304388414066022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9e1fb0277138b84abbc417cb5e5476a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8353125b3318505418461aeedd3afd93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
-    damageValue: 4
+    damageValue: 25
     originDamage: 0
-  _delayTimer: 0.15
-  speed: 13
-  _offset: 3
-  _recoil: 8
+  _delayTimer: 0.3
+  speed: 10
+  _offset: 11
+  _recoil: 9
+  _addForce: 0.3
   hitCount: 2

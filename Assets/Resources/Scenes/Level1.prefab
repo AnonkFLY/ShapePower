@@ -247,7 +247,7 @@ MonoBehaviour:
   color: {r: 1, g: 0, b: 0, a: 1}
   _enemyGroups:
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
-    count: 2
+    count: 5
     random: 4
   isRandom: 0
   delay: 2
@@ -267,7 +267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3939110356463386685
 Transform:
   m_ObjectHideFlags: 0
@@ -400,7 +400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2298197835994584590
 Transform:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &36983506188758877
 Transform:
   m_ObjectHideFlags: 0
@@ -764,7 +764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4405503279189389718
 Transform:
   m_ObjectHideFlags: 0

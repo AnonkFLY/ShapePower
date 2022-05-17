@@ -113,7 +113,17 @@ MonoBehaviour:
     health: 0
     speed: 0
     armor: 0
-  bullets: []
+  bullets:
+  - {fileID: 5871304388414066022, guid: 10925d407d0e9bc4cb2fd41e2bf4404c, type: 3}
+  - {fileID: 5871304388414066022, guid: 10925d407d0e9bc4cb2fd41e2bf4404c, type: 3}
+  - {fileID: 5871304388414066022, guid: 10925d407d0e9bc4cb2fd41e2bf4404c, type: 3}
+  - {fileID: 5871304388414066022, guid: 10925d407d0e9bc4cb2fd41e2bf4404c, type: 3}
+  - {fileID: 5871304388414066022, guid: 10925d407d0e9bc4cb2fd41e2bf4404c, type: 3}
+  - {fileID: 5871304388414066022, guid: f0a941c1ef424bf40aca8d64f8d1931d, type: 3}
+  - {fileID: 5871304388414066022, guid: f0a941c1ef424bf40aca8d64f8d1931d, type: 3}
+  - {fileID: 5871304388414066022, guid: f0a941c1ef424bf40aca8d64f8d1931d, type: 3}
+  - {fileID: 5871304388414066022, guid: f0a941c1ef424bf40aca8d64f8d1931d, type: 3}
+  - {fileID: 5871304388414066022, guid: f0a941c1ef424bf40aca8d64f8d1931d, type: 3}
 --- !u!60 &6442657154327386984
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -292,7 +302,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &2500244022170738881
 PrefabInstance:
   m_ObjectHideFlags: 0
