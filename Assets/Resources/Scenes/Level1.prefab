@@ -253,7 +253,7 @@ MonoBehaviour:
     count: 2
     random: 7
   isRandom: 1
-  delay: 3
+  delay: 2
   isOver: 0
 --- !u!1 &3017387281893038367
 GameObject:
@@ -360,7 +360,7 @@ MonoBehaviour:
     count: 6
     random: 5
   isRandom: 0
-  delay: 15
+  delay: 5
   isOver: 1
 --- !u!1 &3518583248757753815
 GameObject:
@@ -494,7 +494,7 @@ MonoBehaviour:
     count: 8
     random: 10
   isRandom: 0
-  delay: 8
+  delay: 4
   isOver: 0
 --- !u!1 &4498118079785043931
 GameObject:

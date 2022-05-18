@@ -8,8 +8,7 @@ public class FireVirus : Enemy
     GameObject bullet;
     [SerializeField]
     private float timer = 0.5f;
-    [SerializeField]
-    private float offset = 15;
+
     [SerializeField]
     private float randomTimer = 1;
     [SerializeField]

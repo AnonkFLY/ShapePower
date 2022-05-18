@@ -51,6 +51,7 @@ public class SceneView : MonoBehaviour, IJumpable
     private void EnterScene()
     {
         Jump();
+        AudioManager.Instance.PlaySoundEffect(6);
         _body.DOScale(1, 0.2f);
         isClose = true;
         GameManager.Instance.LoadScene(_data.sceneName, _index);
@@ -67,7 +68,9 @@ public class SceneView : MonoBehaviour, IJumpable
     {
         if (isClose)
             return;
+        //AudioManager.Instance.PlaySoundEffect(6);
         _body.DOScale(0.8f, 0.2f);
+
     }
     public void Exit()
     {

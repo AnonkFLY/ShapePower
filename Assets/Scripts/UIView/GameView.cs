@@ -39,6 +39,7 @@ public class GameView : UIBase, IUpdatable
     private void ChangeState()
     {
         isStop = !isStop;
+        AudioManager.Instance.PlaySoundEffect(8);
         if (isStop)
         {
             _stopView.Open();

@@ -276,6 +276,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1593296557912874824, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: sceneManager.scenesData.Array.data[0].sceneName
+      value: Test
+      objectReference: {fileID: 0}
     - target: {fileID: 1593296557912874825, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -328,6 +332,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4785002057097474555, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: soundEffect.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785002057097474555, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
+      propertyPath: soundEffect.Array.data[9]
+      value: 
+      objectReference: {fileID: 8300000, guid: 237378bbc6d636f4c808b6d99bf0f9e5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 545a40f3ab7b59240ab6c895390ba127, type: 3}
 --- !u!212 &5350661766723313656

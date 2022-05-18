@@ -22,6 +22,8 @@ public abstract class Bullet : MonoBehaviour
     protected Transform _transform;
     protected Action onUpdate;
     protected Action onTrigger;
+    [SerializeField]
+    private int isBig;
 
 
     public float Recoil { get => _recoil; }
@@ -29,6 +31,12 @@ public abstract class Bullet : MonoBehaviour
     private void Awake()
     {
         _transform = transform;
+        if (isBig == 0)
+            AudioManager.Instance.PlaySoundEffect(3);
+        else if (isBig == 1)
+            AudioManager.Instance.PlaySoundEffect(4);
+        else if (isBig == 2)
+            AudioManager.Instance.PlaySoundEffect(5);
     }
     public void Init(float eluer)
     {

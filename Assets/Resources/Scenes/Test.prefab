@@ -246,9 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 1, b: 1, a: 1}
   _enemyGroups:
-  - enemy: {fileID: 3131168079984070636, guid: 3cefa05bd81e102419f8b9dbef99d6c4, type: 3}
-    count: 2
-    random: 4
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
     count: 10
     random: 4

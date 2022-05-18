@@ -123,5 +123,6 @@ MonoBehaviour:
   _recoil: 0
   _addForce: 0
   hitCount: 1
+  isBig: 999
   _target: {fileID: 0}
-  _rotationSpeed: 1.5
+  _rotationSpeed: 3

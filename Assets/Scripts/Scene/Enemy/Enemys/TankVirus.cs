@@ -9,8 +9,6 @@ public class TankVirus : VirusEnemy
     [SerializeField]
     private float timer = 2;
     [SerializeField]
-    private float offset = 15;
-    [SerializeField]
     private float randomTimer = 3;
     private IEnumerator Start()
     {

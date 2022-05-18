@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
     }
     private MusicBox InstanceMusicBox()
     {
-        var result = Instantiate(musicBox).GetComponent<MusicBox>();
+        var result = Instantiate(musicBox, transform).GetComponent<MusicBox>();
         result.onOver += OnOverEvent;
         return result;
     }

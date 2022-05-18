@@ -23,6 +23,7 @@ public class StartView : UIBase, IUpdatable
 
     private void CloseThis()
     {
+        AudioManager.Instance.PlaySoundEffect(8);
         uiManager.OpenUI(UIType.LevelView, true);
     }
 

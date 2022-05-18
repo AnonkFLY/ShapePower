@@ -123,3 +123,4 @@ MonoBehaviour:
   _recoil: 0
   _addForce: 0.1
   hitCount: 0
+  isBig: 3

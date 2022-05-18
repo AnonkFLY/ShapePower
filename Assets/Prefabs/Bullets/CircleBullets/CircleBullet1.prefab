@@ -115,10 +115,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
-    damageValue: 6
+    damageValue: 888
     originDamage: 0
   _delayTimer: 0.1
   speed: 10
   _offset: 7.5
   _recoil: 4
+  _addForce: 1
   hitCount: 15
+  isBig: 0

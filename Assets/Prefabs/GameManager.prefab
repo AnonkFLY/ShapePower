@@ -276,8 +276,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffect:
-  - {fileID: 8300000, guid: 77a8b2d4a7c86be47ba36a7035062e5d, type: 3}
-  background: []
+  - {fileID: 8300000, guid: 3a7e7898c005bf442a9acfad5043bcbd, type: 3}
+  - {fileID: 8300000, guid: 0c6dc12e275b1c243a7b5a0d9074bae0, type: 3}
+  - {fileID: 8300000, guid: 5b9c7d4434b3779479f433f7349b69e1, type: 3}
+  - {fileID: 8300000, guid: 5b0a965cde576614dbda4bcab2103bcf, type: 3}
+  - {fileID: 8300000, guid: 6f588608f59ccd0478731202bbf78739, type: 3}
+  - {fileID: 8300000, guid: cfe5ba8fe054c474ab92ce3afbf7cf07, type: 3}
+  - {fileID: 8300000, guid: efb2e9825fc4c254891290c95a8a02ae, type: 3}
+  - {fileID: 8300000, guid: e42f1da261fc2a54b8c9fa77d6bbc1cb, type: 3}
+  - {fileID: 8300000, guid: bfa62b722d884ee44adb7e05f608098a, type: 3}
+  background:
+  - {fileID: 8300000, guid: fb0418e3fa551dd43b1c10e0d07348d8, type: 3}
   musicBox: {fileID: 2039173398684486430, guid: 8e506e6f9653a0f49ac76ad9554bc06b, type: 3}
 --- !u!82 &4143436439593994117
 AudioSource:

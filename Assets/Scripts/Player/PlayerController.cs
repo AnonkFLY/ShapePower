@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour, IHurtable
 
     private void Cutover()
     {
+        AudioManager.Instance.PlaySoundEffect(0);
         state = !state;
     }
 
@@ -111,8 +112,14 @@ public class PlayerController : MonoBehaviour, IHurtable
     private void Dead()
     {
         _gameView.sliderView.SetValue(0);
+
         GetComponent<Collider2D>().enabled = false;
-        _spriteRenderer.DOFade(0, 2f).onComplete += () => { GameManager.Instance.uiManager.OpenUI(UIType.GameLose, true); };
+        _spriteRenderer.DOFade(0, 2f).onComplete += () =>
+        {
+            GameManager.Instance.uiManager.OpenUI(UIType.GameLose, true);
+            AudioManager.Instance.PlaySoundEffect(9);
+        };
+
     }
     private Vector2 currentSpeed;
     public void Move(Vector2 input)
@@ -166,6 +173,7 @@ public class PlayerController : MonoBehaviour, IHurtable
             return;
         if (_currentHealth <= 0)
             return;
+        AudioManager.Instance.PlaySoundEffect(1);
         _currentHealth -= Mathf.Clamp(damage.damageValue - (_playerData.armor / damage.damageValue), 1, 999);
         _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);
         var value = (float)_currentHealth / (float)_maxHealth;

@@ -62,6 +62,7 @@ public class RoleChoice : MonoBehaviour, IJumpable
     {
         if (!isOn)
             return;
+        AudioManager.Instance.PlaySoundEffect(8);
         DebugLog.Message($"Click {_roleIndex}");
         GameManager.Instance.OnRoleChange(roleData, _roleIndex);
         _brieflyCanvas.alpha = 1;
@@ -124,7 +125,6 @@ public class RoleChoice : MonoBehaviour, IJumpable
 
     public void BuyRole()
     {
-        DebugLog.Message("Buy");
         var result = archiveManager.BuyRole(_roleIndex, roleData.price);
         if (result)
             SetPurchased(result);

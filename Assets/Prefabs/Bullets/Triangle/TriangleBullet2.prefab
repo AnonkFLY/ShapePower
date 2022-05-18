@@ -208,3 +208,4 @@ MonoBehaviour:
   _recoil: 9
   _addForce: 0.6
   hitCount: 3
+  isBig: 1
