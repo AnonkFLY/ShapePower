@@ -16,6 +16,8 @@ public class TankVirus : VirusEnemy
         var firePos = _transform.Find("FirePos");
         while (true)
         {
+            if(isDead)
+                break;
             Instantiate(bullet, firePos.position, _transform.rotation).GetComponent<Bullet>().Init(2000);
             yield return new WaitForSeconds(timer + randomTimer);
         }

@@ -251,7 +251,7 @@ MonoBehaviour:
     random: 4
   isRandom: 1
   delay: 5
-  isOver: 1
+  isOver: 0
 --- !u!1 &3518583248757753815
 GameObject:
   m_ObjectHideFlags: 0

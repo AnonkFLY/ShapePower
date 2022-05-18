@@ -15,6 +15,7 @@ public class GameOver : UIBase
     }
     public override void Close()
     {
+        canvasGroup.alpha = 0;
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }

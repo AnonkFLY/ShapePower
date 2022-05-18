@@ -235,15 +235,15 @@ MonoBehaviour:
   sceneManager:
     scenesData:
     - sceneName: Level1
-      sceneSprite: {fileID: 21300000, guid: 6f8408798bb9aa540bdf8719676972f2, type: 3}
+      sceneSprite: {fileID: 21300000, guid: 4421b60cb3d680f45a29e677e0f82d97, type: 3}
     - sceneName: Level2
-      sceneSprite: {fileID: 21300000, guid: cc672386ee892a6439097046a3d3fa61, type: 3}
+      sceneSprite: {fileID: 21300000, guid: 3abf2282b23aee04ba7aa674c385a1da, type: 3}
     - sceneName: Level3
-      sceneSprite: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
+      sceneSprite: {fileID: 21300000, guid: 3abf2282b23aee04ba7aa674c385a1da, type: 3}
     - sceneName: Level4
-      sceneSprite: {fileID: 21300000, guid: e7df16fcb59cac644837485ab6f457f7, type: 3}
+      sceneSprite: {fileID: 21300000, guid: 3abf2282b23aee04ba7aa674c385a1da, type: 3}
     - sceneName: Level5
-      sceneSprite: {fileID: 21300000, guid: 2674571471c854642bdce8013e27f855, type: 3}
+      sceneSprite: {fileID: 21300000, guid: 3aeefb24904eacb40be30469c371246e, type: 3}
   playerManager:
     playerPrefab:
     - {fileID: 3094103725083351654, guid: f7229b6a0d3aa6f4f8445e490d7a7fc4, type: 3}
@@ -285,6 +285,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: efb2e9825fc4c254891290c95a8a02ae, type: 3}
   - {fileID: 8300000, guid: e42f1da261fc2a54b8c9fa77d6bbc1cb, type: 3}
   - {fileID: 8300000, guid: bfa62b722d884ee44adb7e05f608098a, type: 3}
+  - {fileID: 8300000, guid: 237378bbc6d636f4c808b6d99bf0f9e5, type: 3}
   background:
   - {fileID: 8300000, guid: fb0418e3fa551dd43b1c10e0d07348d8, type: 3}
   musicBox: {fileID: 2039173398684486430, guid: 8e506e6f9653a0f49ac76ad9554bc06b, type: 3}

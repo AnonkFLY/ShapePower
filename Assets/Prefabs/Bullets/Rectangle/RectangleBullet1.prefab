@@ -52,9 +52,10 @@ MonoBehaviour:
   _delayTimer: 0.15
   speed: 15
   _offset: 10
-  _recoil: 1.5
+  _recoil: 2.5
   _addForce: 1.5
   hitCount: 1
+  isBig: 0
 --- !u!61 &6731940150357468209
 BoxCollider2D:
   m_ObjectHideFlags: 0

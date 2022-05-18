@@ -118,8 +118,9 @@ MonoBehaviour:
     damageValue: 15
     originDamage: 0
   _delayTimer: 0.2
-  speed: 6
+  speed: 7
   _offset: 3
-  _recoil: 0.1
+  _recoil: 1.4
   _addForce: 0.5
   hitCount: 10
+  isBig: 0

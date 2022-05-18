@@ -205,7 +205,7 @@ MonoBehaviour:
   _delayTimer: 0.35
   speed: 10
   _offset: 15
-  _recoil: 9
+  _recoil: 11
   _addForce: 0.6
   hitCount: 3
   isBig: 1

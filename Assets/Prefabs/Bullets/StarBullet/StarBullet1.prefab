@@ -156,9 +156,10 @@ MonoBehaviour:
   _delayTimer: 0.3
   speed: 10
   _offset: 20
-  _recoil: 1
+  _recoil: 2
   _addForce: 1
   hitCount: 2
+  isBig: 0
   subPoints:
   - {fileID: 8255986103201797988}
   - {fileID: 384408759529722831}

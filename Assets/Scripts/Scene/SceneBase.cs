@@ -53,7 +53,7 @@ public class SceneBase : MonoBehaviour
 
     private void Win()
     {
-        GameManager.Instance.uiManager.OpenUI(UIType.GameWin, true);
+        GameManager.Instance.GameOver(true);
     }
 
 }

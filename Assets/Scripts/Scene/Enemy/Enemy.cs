@@ -30,7 +30,6 @@ public abstract class Enemy : MonoBehaviour, IHurtable
         if (isDead)
         {
             _rig.velocity = Vector2.Lerp(_rig.velocity, Vector2.zero, mass * Time.fixedDeltaTime);
-            Debug.Log(_rig.velocity);
             return;
         }
         Behavior();

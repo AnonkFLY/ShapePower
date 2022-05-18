@@ -87,13 +87,13 @@ public class PlayerController : MonoBehaviour, IHurtable
     {
         isFire = true;
         _camera.SetLockTrans(_firePos.GetChild(0));
-        _camera.StartShakeCamera();
+        //_camera.StartShakeCamera();
     }
     private void FireKeyUp()
     {
         isFire = false;
         _camera.SetLockTrans(_transform);
-        _camera.StopShakeCamera();
+        //_camera.StopShakeCamera();
     }
     private void OnDestroy()
     {
@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour, IHurtable
         GetComponent<Collider2D>().enabled = false;
         _spriteRenderer.DOFade(0, 2f).onComplete += () =>
         {
-            GameManager.Instance.uiManager.OpenUI(UIType.GameLose, true);
+            GameManager.Instance.GameOver(false);
             AudioManager.Instance.PlaySoundEffect(9);
         };
 
@@ -173,6 +173,7 @@ public class PlayerController : MonoBehaviour, IHurtable
             return;
         if (_currentHealth <= 0)
             return;
+        _camera.Shake();
         AudioManager.Instance.PlaySoundEffect(1);
         _currentHealth -= Mathf.Clamp(damage.damageValue - (_playerData.armor / damage.damageValue), 1, 999);
         _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);

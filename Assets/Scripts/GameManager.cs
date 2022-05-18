@@ -24,12 +24,24 @@ public class GameManager : MonoBehaviour
     private RoleBase _currentRole;
     private MoneyView _moneyView;
     private PlayerController _playerController;
+    private bool isLock = false;
     private void Awake()
     {
         SingleInit();
         ManangerInit();
         Application.targetFrameRate = 60;
         _moneyView = GetComponentInChildren<MoneyView>();
+    }
+
+    public void GameOver(bool isWin)
+    {
+        if (isLock)
+            return;
+        if (isWin)
+            uiManager.OpenUI(UIType.GameWin, true);
+        else
+            uiManager.OpenUI(UIType.GameLose, true);
+        isLock = true;
     }
 
     public void OpenMoneyView()
@@ -64,7 +76,6 @@ public class GameManager : MonoBehaviour
 
     public void OnRoleChange(RoleBase choose, int index)
     {
-        print($"On Choose {choose.name}");
         _currentRole = choose;
         archiveManager.SetChoose(index);
     }
@@ -102,8 +113,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(_playerController.gameObject);
         }
-        print("Open");
         uiManager.OpenUI(UIType.LevelView, true);
+        isLock = false;
     }
 
     private GameObject sceneObj;
