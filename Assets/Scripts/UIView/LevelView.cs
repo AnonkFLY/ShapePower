@@ -52,7 +52,7 @@ public class LevelView : UIBase, IUpdatable
             // }
             if (_archive.archiveObj.roles != null)
             {
-                if (_archive.archiveObj.roles[i] != null)
+                if (_archive.archiveObj.roles[i] == null)
                 {
                     _archive.archiveObj.roles[i] = datas[i];
                 }

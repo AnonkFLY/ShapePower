@@ -114,12 +114,12 @@ public class GameManager : MonoBehaviour
             Destroy(_playerController.gameObject);
         }
         uiManager.OpenUI(UIType.LevelView, true);
-        isLock = false;
     }
 
     private GameObject sceneObj;
     public void LoadScene(string name, int index)
     {
+        isLock = false;
         uiManager.OpenUI(UIType.TransitionsView, true);
         var transition = uiManager.GetUI<TransitionsView>(UIType.TransitionsView);
         sceneManager.LoadAsync(name, obj =>
