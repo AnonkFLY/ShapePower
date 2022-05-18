@@ -54,7 +54,7 @@ MonoBehaviour:
   _offset: 10
   _recoil: 1.5
   _addForce: 1.5
-  hitCount: 5
+  hitCount: 7
 --- !u!61 &6731940150357468209
 BoxCollider2D:
   m_ObjectHideFlags: 0

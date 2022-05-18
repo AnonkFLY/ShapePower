@@ -9,7 +9,7 @@ public abstract class Bullet : MonoBehaviour
     private Damage _damage;
     public float _delayTimer = 0.3f;
     [SerializeField]
-    private float speed = 10;
+    protected float speed = 10;
     [SerializeField]
     private float _offset = 10;
     [SerializeField]
@@ -21,6 +21,7 @@ public abstract class Bullet : MonoBehaviour
     private int hitCount = 1;
     protected Transform _transform;
     protected Action onUpdate;
+    protected Action onTrigger;
 
 
     public float Recoil { get => _recoil; }
@@ -31,7 +32,8 @@ public abstract class Bullet : MonoBehaviour
     }
     public void Init(float eluer)
     {
-        _transform.Rotate(0, 0, eluer, Space.Self);
+        if (eluer < 1000)
+            _transform.Rotate(0, 0, eluer, Space.Self);
         _transform.Rotate(Vector3.forward * UnityEngine.Random.Range(-_offset, _offset));
         Destroy(gameObject, 3f);
     }
@@ -51,6 +53,7 @@ public abstract class Bullet : MonoBehaviour
         other.transform.GetComponent<IHurtable>()?.Hurt(_damage);
         other.GetComponent<Rigidbody2D>()?.AddForce(_transform.up * (speed * _addForce), ForceMode2D.Impulse);
         --hitCount;
+        onTrigger?.Invoke();
         if (hitCount == 0)
             BreakBullet(null, other);
     }

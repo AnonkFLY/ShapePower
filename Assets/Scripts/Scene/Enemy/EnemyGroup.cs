@@ -13,6 +13,8 @@ public class EnemyGroup
     public float random = 4;
     public void CreateEnemy(Transform pointTrans)
     {
+        if(count<=0)
+            return;
         var x = Random.Range(-random, random);
         var y = Random.Range(-random, random);
         GameObject.Instantiate(enemy, pointTrans).transform.Translate(new Vector3(x, y, 0));

@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5429682903478360990}
   - component: {fileID: 3165170419630394889}
+  - component: {fileID: 5308197653195282376}
+  - component: {fileID: 2145858250269296118}
   m_Layer: 8
   m_Name: Square
   m_TagString: Untagged
@@ -74,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a002302689c864d47886c0d3d0b77254, type: 3}
-  m_Color: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -84,6 +86,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5308197653195282376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714092335678909060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 949a03412e649294a94e95a894a3b1f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boomDamage:
+    damageValue: 15
+    originDamage: 0
+  boomRadius: 5
+  boomForce: 10
+--- !u!58 &2145858250269296118
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714092335678909060}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.000000007450581}
+  serializedVersion: 2
+  m_Radius: 0.9
 --- !u!1 &5871304388414066022
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,7 +130,8 @@ GameObject:
   - component: {fileID: 8535620937637784051}
   - component: {fileID: 7836870386312749699}
   - component: {fileID: 2405483379240691139}
-  - component: {fileID: -733024696662355152}
+  - component: {fileID: 7603825990852268771}
+  - component: {fileID: 1746782984436430242}
   m_Layer: 8
   m_Name: StarBullet2
   m_TagString: Untagged
@@ -187,7 +223,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.9
---- !u!114 &-733024696662355152
+--- !u!95 &7603825990852268771
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5871304388414066022}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 47a52a4c6f6ba264cb1743a69b041845, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1746782984436430242
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,15 +252,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5871304388414066022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8353125b3318505418461aeedd3afd93, type: 3}
+  m_Script: {fileID: 11500000, guid: e32b8ab4311398d458ab1539998a10c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _damage:
-    damageValue: 25
+    damageValue: 10
     originDamage: 0
-  _delayTimer: 0.3
-  speed: 10
-  _offset: 11
-  _recoil: 9
-  _addForce: 0.3
-  hitCount: 2
+  _delayTimer: 0.5
+  speed: 13
+  _offset: 10
+  _recoil: 15
+  _addForce: 0.5
+  hitCount: 1

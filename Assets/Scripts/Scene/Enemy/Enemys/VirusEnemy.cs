@@ -13,11 +13,10 @@ public class VirusEnemy : Enemy
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (!other.transform.CompareTag("Player"))
+            return;
         other.transform.GetComponent<IHurtable>()?.Hurt(damage);
-        if (other.transform.CompareTag("Player"))
-        {
-            other.transform.GetComponent<PlayerController>().AddForce(_transform.up);
-            Destroy(gameObject);
-        }
+        other.transform.GetComponent<PlayerController>().AddForce(_transform.up);
+        Destroy(gameObject);
     }
 }

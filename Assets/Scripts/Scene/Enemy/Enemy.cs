@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, IHurtable
@@ -14,10 +15,12 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     protected Transform _transform;
     protected Rigidbody2D _rig;
     protected SceneBase _scenes;
+    protected Animator _animator;
     private void Awake()
     {
         _transform = transform;
         _rig = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _target = FindObjectOfType<PlayerController>().transform;
         _scenes = FindObjectOfType<SceneBase>();
     }
@@ -26,7 +29,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
         Behavior();
     }
     public virtual void Dead()
-    { 
+    {
         GameManager.Instance.archiveManager.AddMoney(money);
         _scenes.EnemyDead();
         Destroy(gameObject);
@@ -34,16 +37,21 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     public abstract void Behavior();
     protected void MoveToPlayer()
     {
-        var dir = (_target.position - _transform.position).normalized * moveSpeed;
+        var dir = LookPlayer();
         _rig.velocity = Vector2.Lerp(_rig.velocity, dir, mass * Time.fixedDeltaTime);
-        _transform.eulerAngles = new Vector3(0, 0, Vector2.Angle(Vector2.up, dir));
+    }
+    protected Vector3 LookPlayer()
+    {
+        var dir = (_target.position - _transform.position).normalized * moveSpeed;
+        _transform.up = dir.normalized;
+        return dir;
     }
 
     public void Hurt(Damage damage)
     {
         if (damage.originDamage == OriginDamage.Enemy)
             return;
-        print("Be Hurt");
+        _animator.Play(UIManager.open);
         currentHealth = Math.Clamp(currentHealth - damage.damageValue, 0, maxHealth);
         if (currentHealth <= 0)
             Dead();

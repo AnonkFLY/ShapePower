@@ -38,13 +38,27 @@ public class LevelView : UIBase, IUpdatable
     {
         for (int i = 0; i < roleChoices.Length; i++)
         {
-            if (_archive.archiveObj.roles != null && _archive.archiveObj.roles.Length > i)
+            // DebugLog.Warning($"尝试读取{i}");
+            // if (_archive.archiveObj.roles != null && _archive.archiveObj.roles.Length > i)
+            // {
+            //     DebugLog.Warning($"读取{i}是否为空");
+            //     var role = _archive.archiveObj.roles[i];
+            //     if (role != null)
+            //     {
+            //         role.sprite = datas[i].sprite;
+            //         datas[i] = role;
+            //         DebugLog.Warning($"{i}不为空，写入");
+            //     }
+            // }
+            if (_archive.archiveObj.roles != null)
             {
-                var role = _archive.archiveObj.roles[i];
-                if (role != null)
+                if (_archive.archiveObj.roles[i] == null)
                 {
-                    role.sprite = datas[i].sprite;
-                    datas[i] = role;
+                    _archive.archiveObj.roles[i] = datas[i];
+                }
+                else
+                {
+                    datas[i] = _archive.archiveObj.roles[i];
                 }
             }
             var unLock = _archive.archiveObj.GetRoleIsPurchased(i);

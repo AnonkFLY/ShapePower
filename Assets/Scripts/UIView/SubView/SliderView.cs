@@ -55,8 +55,6 @@ public class SliderView
     }
     private void OnRemove()
     {
-        if(_value<=0)
-            return;
         _onStop = true;
         if (!_isAddDone)
         {

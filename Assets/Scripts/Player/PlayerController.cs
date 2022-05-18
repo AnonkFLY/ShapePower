@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour, IHurtable
     }
     private void Dead()
     {
+        _gameView.sliderView.SetValue(0);
         GetComponent<Collider2D>().enabled = false;
         _spriteRenderer.DOFade(0, 2f).onComplete += () => { GameManager.Instance.uiManager.OpenUI(UIType.GameLose, true); };
     }
@@ -126,7 +127,7 @@ public class PlayerController : MonoBehaviour, IHurtable
             _transform.eulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.up, radius));
             return;
         }
-        if (input == Vector2.zero)
+        if (input == Vector2.zero || _currentHealth <= 0)
             return;
         angle = Vector2.SignedAngle(Vector2.up, input);
         _transform.eulerAngles = new Vector3(0, 0, angle);
@@ -151,7 +152,7 @@ public class PlayerController : MonoBehaviour, IHurtable
         }
         else
         {
-            bullet = Instantiate(bullets[_playerData.level + 5], firePos, Quaternion.identity).GetComponent<Bullet>();
+            bullet = Instantiate(bullets[_playerData.level + 4], firePos, Quaternion.identity).GetComponent<Bullet>();
         }
         var angle = Vector2.SignedAngle(Vector3.up, euler);
         _transform.position -= euler * (bullet.Recoil * Time.deltaTime);
@@ -165,7 +166,7 @@ public class PlayerController : MonoBehaviour, IHurtable
             return;
         if (_currentHealth <= 0)
             return;
-        _currentHealth -= damage.damageValue - (damage.damageValue / _playerData.armor);
+        _currentHealth -= Mathf.Clamp(damage.damageValue - (_playerData.armor / damage.damageValue), 1, 999);
         _currentHealth = Math.Clamp(_currentHealth, 0, _maxHealth);
         var value = (float)_currentHealth / (float)_maxHealth;
         if (_gameView == null)

@@ -10,6 +10,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private List<EnemyGroup> _enemyGroups;
     [SerializeField] private bool isRandom = false;
     [SerializeField] private float delay = 3;
+    [SerializeField] private bool isOver = false;
     public Action onOver;
     private Transform _transform;
     private void Awake()
@@ -36,19 +37,11 @@ public class SpawnPoint : MonoBehaviour
             if (isRandom)
             {
                 var r = UnityEngine.Random.Range(0, _enemyGroups.Count);
-                _enemyGroups[r].CreateEnemy(_transform);
-                if (_enemyGroups[r].count <= 0)
-                {
-                    RemoveListAt<EnemyGroup>(_enemyGroups, r);
-                }
+                CreateEnemys(r);
             }
             else
             {
-                _enemyGroups[0].CreateEnemy(_transform);
-                if (_enemyGroups[0].count <= 0)
-                {
-                    RemoveListAt<EnemyGroup>(_enemyGroups, 0);
-                }
+                CreateEnemys(0);
             }
         }
         while (_transform.childCount > 0)
@@ -56,6 +49,25 @@ public class SpawnPoint : MonoBehaviour
             yield return delay;
         }
         onOver?.Invoke();
+    }
+    private void CreateEnemys(int i)
+    {
+        if (!isOver)
+        {
+            _enemyGroups[i].CreateEnemy(_transform);
+            if (_enemyGroups[i].count <= 0)
+            {
+                RemoveListAt<EnemyGroup>(_enemyGroups, i);
+            }
+        }
+        else
+        {
+            while (_enemyGroups[i].count > 0)
+            {
+                _enemyGroups[i].CreateEnemy(_transform);
+            }
+            RemoveListAt<EnemyGroup>(_enemyGroups, i);
+        }
     }
     private void RemoveListAt<T>(List<T> list, int index)
     {

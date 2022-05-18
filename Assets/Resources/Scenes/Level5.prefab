@@ -247,14 +247,20 @@ MonoBehaviour:
   color: {r: 1, g: 0, b: 0, a: 1}
   _enemyGroups:
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
-    count: 8
+    count: 5
     random: 5
   - enemy: {fileID: 3131168079984070636, guid: fa59ce4977141bc47bfa733bae61f241, type: 3}
     count: 2
     random: 7
+  - enemy: {fileID: 3131168079984070636, guid: fa59ce4977141bc47bfa733bae61f241, type: 3}
+    count: 2
+    random: 7
+  - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
+    count: 6
+    random: 7
   isRandom: 1
-  delay: 3
-  isOver: 0
+  delay: 4
+  isOver: 1
 --- !u!1 &3017387281893038367
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,12 +309,12 @@ MonoBehaviour:
   _enemyGroups:
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
     count: 10
-    random: 5
+    random: 8
   - enemy: {fileID: 3131168079984070636, guid: fa59ce4977141bc47bfa733bae61f241, type: 3}
-    count: 2
+    count: 6
     random: 15
   isRandom: 0
-  delay: 6
+  delay: 2
   isOver: 0
 --- !u!1 &3207172798092282000
 GameObject:
@@ -356,11 +362,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0, b: 0, a: 1}
   _enemyGroups:
+  - enemy: {fileID: 3131168079984070636, guid: fa59ce4977141bc47bfa733bae61f241, type: 3}
+    count: 5
+    random: 10
+  - enemy: {fileID: 3131168079984070636, guid: 3cefa05bd81e102419f8b9dbef99d6c4, type: 3}
+    count: 5
+    random: 10
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
-    count: 6
-    random: 5
-  isRandom: 0
-  delay: 15
+    count: 15
+    random: 10
+  isRandom: 1
+  delay: 4
   isOver: 1
 --- !u!1 &3518583248757753815
 GameObject:
@@ -408,7 +420,7 @@ GameObject:
   - component: {fileID: 4351067498810407626}
   - component: {fileID: 6918809628308647710}
   m_Layer: 0
-  m_Name: Level1
+  m_Name: Level5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,11 +503,23 @@ MonoBehaviour:
   color: {r: 1, g: 0, b: 0, a: 1}
   _enemyGroups:
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
-    count: 8
+    count: 5
     random: 10
-  isRandom: 0
-  delay: 8
-  isOver: 0
+  - enemy: {fileID: 3131168079984070636, guid: 3cefa05bd81e102419f8b9dbef99d6c4, type: 3}
+    count: 3
+    random: 10
+  - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
+    count: 3
+    random: 10
+  - enemy: {fileID: 3131168079984070636, guid: fa59ce4977141bc47bfa733bae61f241, type: 3}
+    count: 3
+    random: 10
+  - enemy: {fileID: 3131168079984070636, guid: 3cefa05bd81e102419f8b9dbef99d6c4, type: 3}
+    count: 2
+    random: 3
+  isRandom: 1
+  delay: 4
+  isOver: 1
 --- !u!1 &4498118079785043931
 GameObject:
   m_ObjectHideFlags: 0

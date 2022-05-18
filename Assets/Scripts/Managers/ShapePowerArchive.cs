@@ -65,7 +65,8 @@ public class ShapePowerArchive : ArchiveManager<ShapePowerSave>
 
     public void InitRoleData(RoleBase[] roleChoices)
     {
-        archiveObj.roles = roleChoices;
+        if (archiveObj.roles == null)
+            archiveObj.roles = roleChoices;
         Saved();
     }
 }
