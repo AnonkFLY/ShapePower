@@ -6,23 +6,25 @@ using UnityEngine;
 public class MusicBox : MonoBehaviour
 {
     private AudioSource _audio;
-    private WaitForSeconds wait = new WaitForSeconds(5);
     public Action<MusicBox> onOver;
+
     private void Awake()
     {
         _audio = GetComponent<AudioSource>();
     }
+
     public void Init(AudioClip clip)
     {
-        if (clip == null)
-            return;
+        if (clip == null) return;
+        
         _audio.clip = clip;
         _audio.Play();
-        StartCoroutine(Delay());
+        StartCoroutine(Delay(clip.length));
     }
-    private IEnumerator Delay()
+
+    private IEnumerator Delay(float delayTime)
     {
-        yield return wait;
+        yield return new WaitForSeconds(delayTime);
         onOver?.Invoke(this);
     }
 }

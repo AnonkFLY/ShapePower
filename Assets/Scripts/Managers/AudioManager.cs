@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private static AudioManager instance;
+    public static AudioManager Instance { get; private set; }
 
-    public static AudioManager Instance { get => instance; }
     [SerializeField]
     private AudioClip[] soundEffect;
     [SerializeField]
     private AudioClip[] background;
     [SerializeField]
     private GameObject musicBox;
-    private List<MusicBox> over = new List<MusicBox>();
+    private List<MusicBox> _over = new List<MusicBox>();
     private void Awake()
     {
-        instance = this;
+        Instance = this;
     }
     public void PlaySoundEffect(int i)
     {
@@ -28,13 +27,13 @@ public class AudioManager : MonoBehaviour
     }
     private MusicBox GetMusicBox()
     {
-        var i = over.Count;
+        var i = _over.Count;
         if (i < 1)
         {
             return InstanceMusicBox();
         }
-        var result = over[i - 1];
-        over.RemoveAt(i - 1);
+        var result = _over[i - 1];
+        _over.RemoveAt(i - 1);
         return result;
     }
     private MusicBox InstanceMusicBox()
@@ -45,6 +44,6 @@ public class AudioManager : MonoBehaviour
     }
     private void OnOverEvent(MusicBox musicBox)
     {
-        over.Add(musicBox);
+        _over.Add(musicBox);
     }
 }
