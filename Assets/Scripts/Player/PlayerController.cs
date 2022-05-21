@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour, IHurtable
     private void Dead()
     {
         _gameView.sliderView.SetValue(0);
-
+        _gameView.isLock = true;
         GetComponent<Collider2D>().enabled = false;
         _spriteRenderer.DOFade(0, 2f).onComplete += () =>
         {

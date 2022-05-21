@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: -1230532223081435872}
   - component: {fileID: 2982634749242276540}
   m_Layer: 6
-  m_Name: Virus
+  m_Name: ShamanChild
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ Transform:
   m_GameObject: {fileID: 3131168079984070636}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7733291716725338918}
@@ -149,13 +149,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   summonEffect: {fileID: 4396541883811646172, guid: 5e8c649742d7f7a48900fa59e713aba6, type: 3}
-  maxHealth: 30
-  currentHealth: 30
-  moveSpeed: 5.8
-  money: 3
-  mass: 2
+  maxHealth: 14
+  currentHealth: 14
+  moveSpeed: 4.5
+  money: 0
+  mass: 1
   damage:
-    damageValue: 8
+    damageValue: 4
     originDamage: 1
 --- !u!50 &-1230532223081435872
 Rigidbody2D:

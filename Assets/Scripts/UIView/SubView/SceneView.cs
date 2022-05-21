@@ -60,7 +60,7 @@ public class SceneView : MonoBehaviour, IJumpable
     {
         if (!isClose)
             return;
-        DebugLog.Message("Jump");
+        _transform.localScale = Vector3.zero;
         _transform.DOScale(1, 0.6f);
         isClose = false;
     }
@@ -68,7 +68,6 @@ public class SceneView : MonoBehaviour, IJumpable
     {
         if (isClose)
             return;
-        //AudioManager.Instance.PlaySoundEffect(6);
         _body.DOScale(0.8f, 0.2f);
 
     }

@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator BackLevel()
     {
+        isLock = true;
         uiManager.OpenUI(UIType.TransitionsView, true);
         yield return new WaitForSeconds(1.4f);
         if (sceneObj)

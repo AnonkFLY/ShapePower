@@ -30,7 +30,6 @@ public class FireVirus : Enemy
     }
     public override void Behavior()
     {
-        Debug.DrawRay(_transform.position, _transform.up);
         if (Vector2.Distance(_transform.position, _target.position) > 5)
             MoveToPlayer();
         else

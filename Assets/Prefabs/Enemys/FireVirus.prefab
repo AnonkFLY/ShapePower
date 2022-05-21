@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e01440f7d599b48a23303855af8562, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  summonEffect: {fileID: 4396541883811646172, guid: 5e8c649742d7f7a48900fa59e713aba6, type: 3}
   maxHealth: 80
   currentHealth: 80
   moveSpeed: 4.5
@@ -228,9 +229,8 @@ MonoBehaviour:
   mass: 3
   bullet: {fileID: 5871304388414066022, guid: 15205725ed15f4549a6a2757ea47514b, type: 3}
   timer: 0.5
-  offset: 15
   randomTimer: 1
   speedLeft: 0.6
   damage:
     damageValue: 4
-    originDamage: 0
+    originDamage: 1

@@ -48,7 +48,7 @@ public class ShapePowerSave
             var level = roles[index].level;
             roles[index].armor += 2 * level;
             roles[index].health += 10 * level;
-            roles[index].levelupPay *= 2;
+            roles[index].levelupPay *= 5;
             return true;
         }
         return false;

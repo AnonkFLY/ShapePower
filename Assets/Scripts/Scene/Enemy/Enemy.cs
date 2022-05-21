@@ -6,6 +6,7 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour, IHurtable
 {
+    [SerializeField] protected GameObject summonEffect;
     [SerializeField] protected int maxHealth = 30;
     [SerializeField] protected int currentHealth = 30;
     [SerializeField] protected float moveSpeed = 3;
@@ -17,9 +18,13 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     protected SceneBase _scenes;
     protected Animator _animator;
     protected bool isDead = false;
+    public Action<Enemy> onDead;
+    protected SpriteRenderer sprite;
     private void Awake()
     {
         _transform = transform;
+        Instantiate(summonEffect, _transform);
+        sprite = GetComponentInChildren<SpriteRenderer>();
         _rig = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _target = FindObjectOfType<PlayerController>().transform;
@@ -37,7 +42,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     public virtual void Dead()
     {
         GameManager.Instance.archiveManager.AddMoney(money);
-        isDead = true;
+        RemoveCount();
         _animator.Play(UIManager.close);
         GetComponent<Collider2D>().enabled = false;
     }
@@ -47,7 +52,7 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     }
     private void OnDestroy()
     {
-        _scenes.EnemyDead();
+        RemoveCount();
     }
     public abstract void Behavior();
     protected void MoveToPlayer()
@@ -86,5 +91,13 @@ public abstract class Enemy : MonoBehaviour, IHurtable
     {
         yield return new WaitForSeconds(0.3f);
         isPlay = false;
+    }
+    private void RemoveCount()
+    {
+        if (isDead)
+            return;
+        isDead = true;
+        _scenes.EnemyDead();
+        onDead?.Invoke(this);
     }
 }

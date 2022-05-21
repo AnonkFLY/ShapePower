@@ -102,13 +102,13 @@ MonoBehaviour:
   color: {r: 1, g: 0, b: 0, a: 1}
   _enemyGroups:
   - enemy: {fileID: 3131168079984070636, guid: 7d608311f3b94924095ce5e47e5a69eb, type: 3}
-    count: 10
+    count: 8
     random: 5
   - enemy: {fileID: 3131168079984070636, guid: fa59ce4977141bc47bfa733bae61f241, type: 3}
-    count: 2
+    count: 4
     random: 15
-  isRandom: 0
-  delay: 6
+  isRandom: 1
+  delay: 3
   isOver: 0
 --- !u!1 &3207172798092282000
 GameObject:

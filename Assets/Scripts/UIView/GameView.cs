@@ -15,6 +15,7 @@ public class GameView : UIBase, IUpdatable
     public SliderView sliderView;
     [SerializeField] private TMP_Text _infoText;
     private Vector3 _orginCameraPos;
+    public bool isLock = false;
     public override void RegisterUI(UIManager uiManager)
     {
         base.RegisterUI(uiManager);
@@ -38,6 +39,8 @@ public class GameView : UIBase, IUpdatable
     }
     private void ChangeState()
     {
+        if(isLock)
+            return;
         isStop = !isStop;
         AudioManager.Instance.PlaySoundEffect(8);
         if (isStop)
@@ -51,7 +54,7 @@ public class GameView : UIBase, IUpdatable
     {
         base.Open();
         //FindObjectOfType<CameraMananger>().ResetPosition();
-
+        isLock = false; 
         sliderView.SetValue(1);
         FindObjectOfType<SceneBase>().RegisterEnemyCount(SetInfo);
         canvasGroup.interactable = true;

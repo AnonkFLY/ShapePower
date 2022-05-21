@@ -221,16 +221,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd118b2f1bf34eb4aabeacc90330383a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  summonEffect: {fileID: 4396541883811646172, guid: 5e8c649742d7f7a48900fa59e713aba6, type: 3}
   maxHealth: 200
   currentHealth: 200
-  moveSpeed: 3
+  moveSpeed: 3.5
   money: 8
   mass: 6.5
-  _rotationSpeed: 3
   damage:
-    damageValue: 40
+    damageValue: 60
     originDamage: 1
   bullet: {fileID: 5871304388414066022, guid: d21f36756c40d1c4f9be974f09c54172, type: 3}
   timer: 1
-  offset: 15
   randomTimer: 2

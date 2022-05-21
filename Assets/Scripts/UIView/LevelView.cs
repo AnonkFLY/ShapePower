@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -58,6 +59,7 @@ public class LevelView : UIBase, IUpdatable
                 }
                 else
                 {
+                    _archive.archiveObj.roles[i].sprite = datas[i].sprite;
                     datas[i] = _archive.archiveObj.roles[i];
                 }
             }
@@ -91,6 +93,7 @@ public class LevelView : UIBase, IUpdatable
     public override void Open()
     {
         _panelAnimator?.Play(UIManager.open);
+        canvasGroup.alpha = 1;
         canvasGroup.interactable = true;
         canvasGroup.blocksRaycasts = true;
     }
@@ -114,8 +117,9 @@ public class LevelView : UIBase, IUpdatable
             else
                 item.WithDraw();
             yield return wait;
+            if (open != isOpen)
+                break;
         }
-
     }
 
     public void OnUpdateView()
@@ -128,5 +132,13 @@ public class LevelView : UIBase, IUpdatable
         {
             GameManager.Instance.archiveManager.AddMoney(100);
         }
+    }
+    public void SetAplhaZero()
+    {
+        canvasGroup.alpha = 0;
+    }
+    public void SetAplhaOne()
+    {
+        canvasGroup.alpha = 1;
     }
 }

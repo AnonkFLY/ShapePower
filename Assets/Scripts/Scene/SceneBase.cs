@@ -34,6 +34,10 @@ public class SceneBase : MonoBehaviour
             // };
         }
     }
+    public void AddEnemyCount()
+    {
+        ++_enemyCout;
+    }
     public void EnemyDead()
     {
         --_enemyCout;

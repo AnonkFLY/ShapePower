@@ -116,14 +116,14 @@ MonoBehaviour:
   bullets:
   - {fileID: 5871304388414066022, guid: 9fcfb3743b581d24a9fbfdf471db9a11, type: 3}
   - {fileID: 5871304388414066022, guid: 9fcfb3743b581d24a9fbfdf471db9a11, type: 3}
-  - {fileID: 5871304388414066022, guid: 9fcfb3743b581d24a9fbfdf471db9a11, type: 3}
-  - {fileID: 5871304388414066022, guid: 9fcfb3743b581d24a9fbfdf471db9a11, type: 3}
-  - {fileID: 5871304388414066022, guid: 9fcfb3743b581d24a9fbfdf471db9a11, type: 3}
+  - {fileID: 5871304388414066022, guid: 7c141a04cc9ec5d49a0da267d6fa4a3c, type: 3}
+  - {fileID: 5871304388414066022, guid: 7c141a04cc9ec5d49a0da267d6fa4a3c, type: 3}
+  - {fileID: 5871304388414066022, guid: bdf892826ff300342aad7c2fbfd04f0e, type: 3}
   - {fileID: 5871304388414066022, guid: e19ac2bc421be474aa2470855ad09c8f, type: 3}
   - {fileID: 5871304388414066022, guid: e19ac2bc421be474aa2470855ad09c8f, type: 3}
-  - {fileID: 5871304388414066022, guid: e19ac2bc421be474aa2470855ad09c8f, type: 3}
-  - {fileID: 5871304388414066022, guid: e19ac2bc421be474aa2470855ad09c8f, type: 3}
-  - {fileID: 5871304388414066022, guid: e19ac2bc421be474aa2470855ad09c8f, type: 3}
+  - {fileID: 5871304388414066022, guid: 14968a9cd6cd5de4ba571ab223e96405, type: 3}
+  - {fileID: 5871304388414066022, guid: 14968a9cd6cd5de4ba571ab223e96405, type: 3}
+  - {fileID: 5871304388414066022, guid: ae9815aaa32858747acb43c922e62af8, type: 3}
 --- !u!58 &6551216461676671683
 CircleCollider2D:
   m_ObjectHideFlags: 0
